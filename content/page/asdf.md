@@ -1,6 +1,6 @@
 ---
-title: "About"
-description: "Hugo, the world's fastest framework for building websites"
+title: "Test"
+description: "Test Page"
 date: 2021-02-10T16:15:13+09:00
 aliases: ["about-us", "about-hugo", "contact"]
 author: "Hugo Authors"
