@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Hugo, the world's fastest framework for building websites"
+description: "who am i?"
 date: 2021-02-10T16:15:13+09:00
 aliases: ["about-us", "about-hugo", "contact"]
 author: "Hugo Authors"
@@ -8,20 +8,18 @@ license: "CC BY-NC-ND"
 lastmod: 2021-02-10T16:15:13+09:00
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+[![Tech Blog Badge](http://img.shields.io/badge/Github-black?style=flat-square&logo=github&link=https://github.com/parkjbdev)](https://github.com/parkjbdev)
+[![Instagram Badge](https://img.shields.io/badge/Instagram-e4405f?style=flat-square&logo=instagram&logoColor=white&link=https://www.instagram.com/parkjb_825)](https://www.instagram.com/parkjb_825)
+[![Facebook Badge](https://img.shields.io/badge/Facebook-1877f2?style=flat-square&logo=facebook&logoColor=white&link=https://www.facebook.com/parkjb825)](https://www.facebook.com/parkjb825)
+[![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:parkjbdev@gmail.com)](mailto:parkjbdev@gmail.com)
 
-Hugo makes use of a variety of open source projects including:
+- 🔭 I’m currently working on ... alone😢
+- 🌱 I’m currently learning web
+- 👯 I’m looking to collaborate on web projects
+- 🤔 I’m looking for help with ... almost everything :D
+- 💬 Ask me about ...?
+- 📫 How to reach me: Check upper shieldIos!!
+- 😄 Pronouns: 프로삽질러
+- ⚡ Fun fact: vanilla flavouring comes from beaver's butt
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
-
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
-
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/parkjbdev).
+![](https://github-readme-stats.vercel.app/api?username=parkjbdev&show_icons=true&theme=dark) &nbsp; ![](https://github-readme-stats.vercel.app/api/top-langs/?username=parkjbdev&layout=compact&theme=dark)
