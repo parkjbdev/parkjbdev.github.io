@@ -1,6 +1,6 @@
 ---
 title: "BOGGLE"
-date: 2020-11-15:31:13+09:00
+date: 2020-11-06T15:31:13+09:00
 categories: ["Algorithm"]
 tags: ["algorithm", "exhaustive search", "dynamic programming"]
 slug: algospot-boggle
