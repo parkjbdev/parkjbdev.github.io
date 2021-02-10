@@ -235,7 +235,7 @@
 <h2 id="풀이">풀이</h2>
 <p>가능한 경우를 모두 탐색해보아야 주어진 단어들이 BOGGLE 게임판에 존재하는지 확인할 수 있다.</p>
 <p>예를 들어, 위의 게임판에서 PRETTY라는 단어를 찾기 위해서는 먼저 P 를 찾고, 그 주변(상하좌우, 대각선)에 그 다음 character R가 존재하는지 확인해보아야 한다. 이와 같은 과정을 계속하여 반복하면 주어진 단어가 존재하는지 확인할 수 있다.</p>
-<p>즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L <em><strong>P</strong></em> (gameBoard[0][3]) 에서 character P를 찾고, P의 주변 에서 character <em><strong>R</strong></em> (gameBoard[1][2])를 찾고, 그 주변에서 또 character <em><strong>E</strong></em> (gameBoard[2][3])를 찾고 &hellip; (계속)</p>
+<p>즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L <em><strong>P</strong></em> (<code>gameBoard[0][3]</code>) 에서 character P를 찾고, P의 주변 에서 character <em><strong>R</strong></em> (<code>gameBoard[1][2]</code>)를 찾고, 그 주변에서 또 character <em><strong>E</strong></em> (<code>gameBoard[2][3]</code>)를 찾고 &hellip; (계속)</p>
 <p>위와 같은 과정을 반복하여 수행하기 위해서 재귀함수를 이용하여 코드를 작성하면 된다. 그렇게 작성한 코드는 다음과 같다.</p>
 <h3 id="hasword-method-dp-사용x">hasWord method (DP 사용X)</h3>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">hasWord</span><span class="o">(</span><span class="n">Coordinate</span> <span class="n">coordinate</span><span class="o">,</span> <span class="n">String</span> <span class="n">word</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span>
@@ -251,11 +251,12 @@
 	<span class="o">}</span>
 	<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 <span class="o">}</span>
-</code></pre></div><p><img src="fail.png" alt="memoization 없이 제출한 결과 - 시간초과"  /></p>
+</code></pre></div><p><em>memoization 없이 제출한 결과 - 시간초과</em></p>
+<p><img src="fail.png" alt="memoization 없이 제출한 결과 - 시간초과"  /></p>
 <p>하지만 위와 같이 오직 재귀로만 작성하면, 이미 순회한 부분을 반복해서 다시 순회하는 과정(overlapping subproblems)이 생길 수 있어 비효율적이다. 따라서 이미 순회한 부분은 단어가 완성되는지의 여부를 저장(memoization)해주면 같은 연산을 피할 수 있다.</p>
-<p>따라서, 3차원 배열 cache를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.</p>
-<p>즉, cache[x][y][index] = (gameBoard[x][y] 좌표에서 word.subString(index)를 완성시킬수 있는지의 여부) 이다.</p>
-<p>단어가 완성된다면 true, 완성시킬 수 없다면 false, 아직 순회한 적이 없다면 null로 저장해주었다. 코드는 다음과 같다.</p>
+<p>따라서, 3차원 배열 <code>cache</code>를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.</p>
+<p>즉, <code>cache[x][y][index]</code> = (<code>gameBoard[x][y]</code> 좌표에서 <code>word.subString(index)</code>를 완성시킬수 있는지의 여부) 이다.</p>
+<p>단어가 완성된다면 <code>true</code>, 완성시킬 수 없다면 <code>false</code>, 아직 순회한 적이 없다면 <code>null</code>로 저장해주었다. 코드는 다음과 같다.</p>
 <h3 id="hasword-method-dp-사용o">hasWord method (DP 사용O)</h3>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">hasWord</span><span class="o">(</span><span class="n">Coordinate</span> <span class="n">coordinate</span><span class="o">,</span> <span class="n">String</span> <span class="n">word</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span>
 <span class="o">{</span>
@@ -280,7 +281,8 @@
 </span><span class="c1"></span>	<span class="n">cache</span><span class="o">[</span><span class="n">coordinate</span><span class="o">.</span><span class="na">getX</span><span class="o">()][</span><span class="n">coordinate</span><span class="o">.</span><span class="na">getY</span><span class="o">()][</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
 	<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 <span class="o">}</span>
-</code></pre></div><p><img src="pass.png" alt="memoization 적용한 결과 - Pass"  /></p>
+</code></pre></div><p><em>memoization 적용한 결과 - Pass</em></p>
+<p><img src="pass.png" alt="memoization 적용한 결과 - Pass"  /></p>
 <h2 id="코드-전문---github-링크httpsgithubcomparkjbdevalgostudyblobmasterapssch06bogglesrcmainjava">코드 전문 - <a class="link" href="https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOGGLE/src/Main.java"  target="_blank" rel="noopener"
     >Github 링크</a></h2>
 

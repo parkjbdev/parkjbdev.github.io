@@ -18,7 +18,7 @@
 &lt;p&gt;&lt;img src=&#34;http://algospot.com/media/judge-attachments/2b7bfee35cbec2f4e799bb011ac18f69/03.png&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;게임보드가 주어졌을 때, &amp;lsquo;ㄱ&amp;rsquo;모양 도형을 이용하여 게임보드를 채울 수 있는 방법의 수를 구하는 문제이다.&lt;/p&gt;
 &lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
-&lt;p&gt;map에서 벽이거나 &amp;lsquo;ㄱ&amp;rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다.
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;에서 벽이거나 &amp;lsquo;ㄱ&amp;rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다.
 즉, 과정을 예시를 들자면, 다음과 같다.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 다음 빈 좌표로 이동
 2. &#39;ㄱ&#39;모양 도형 채워넣기 (방향 돌려가면서 반복!!)
@@ -53,13 +53,10 @@
 		&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 	&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이번문제도 책을 보지않고 풀었다ㅎㅎ 특정기능은 메소드로 따로 빼주는거를 좋아하는지라 수행하는 기능에 따라서 나누어 주었고, 덕분에 가독성적인 측면에서 이득이 있었다.&lt;/p&gt;
-&lt;p&gt;​&lt;/p&gt;
-&lt;h2 id=&#34;코드-전문&#34;&gt;코드 전문&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOARDCOVER/src/Main.java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Github 링크&lt;/a&gt; 참조&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이번문제도 책을 보지않고 풀었다ㅎㅎ 특정기능은 메소드로 따로 빼주는거를 좋아하는지라 수행하는 기능에 따라서 나누어 주었고, 덕분에 가독성적인 측면에서 이득이 있었다.
+​&lt;/p&gt;
+&lt;h2 id=&#34;코드-전문---github-링크httpsgithubcomparkjbdevalgostudyblobmasterapssch06boardcoversrcmainjava&#34;&gt;코드 전문 - &lt;a class=&#34;link&#34; href=&#34;https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOARDCOVER/src/Main.java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github 링크&lt;/a&gt;&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -78,8 +75,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
 &lt;p&gt;책을 안보고 풀었다ㅎㅎ 개인적으로는 책보다 더 나은 코드를 작성한 것 같아 뿌듯하다.&lt;/p&gt;
-&lt;p&gt;먼저, 학생의 수가 홀수일 경우, 짝이 없는 학생이 반드시 발생하므로, solve method에서 바로 return 시켜주었다. 홀수가 아닐 경우 recursive method에서 문제를 해결하도록 하였다. 짝이 있는 학생들과 짝이 정해지지 않은 학생들을 구분하기 위해서 isPaired boolean array에서 짝이 있는 학생들의 경우 true, 짝이 없는 학생들의 경우 false로 저장하도록 하였다.&lt;/p&gt;
-&lt;p&gt;recursive 메소드는 pairs array에 저장되어 있는 짝꿍이 가능한 pair들을 입력받은 순서대로 순회하면서, 해당 pair를 이용하였을 때 짝이 만들어 지면 pairs array의 다음 인덱스 pair에서도 recursive 메소드를 돌면서 해당 pair를 이용하였을 때 짝이 만들어지는지 또 확인한다.&lt;/p&gt;
+&lt;p&gt;먼저, 학생의 수가 홀수일 경우, 짝이 없는 학생이 반드시 발생하므로, solve method에서 바로 return 시켜주었다. 홀수가 아닐 경우 recursive method에서 문제를 해결하도록 하였다. 짝이 있는 학생들과 짝이 정해지지 않은 학생들을 구분하기 위해서 &lt;code&gt;isPaired&lt;/code&gt; boolean array에서 짝이 있는 학생들의 경우 &lt;code&gt;true&lt;/code&gt;, 짝이 없는 학생들의 경우 &lt;code&gt;false&lt;/code&gt;로 저장하도록 하였다.&lt;/p&gt;
+&lt;p&gt;recursive 메소드는 &lt;code&gt;pairs&lt;/code&gt; array에 저장되어 있는 짝꿍이 가능한 &lt;code&gt;pair&lt;/code&gt;들을 입력받은 순서대로 순회하면서, 해당 &lt;code&gt;pair&lt;/code&gt;를 이용하였을 때 짝이 만들어 지면 &lt;code&gt;pairs&lt;/code&gt; array의 다음 인덱스 &lt;code&gt;pair&lt;/code&gt;에서도 recursive 메소드를 돌면서 해당 &lt;code&gt;pair&lt;/code&gt;를 이용하였을 때 짝이 만들어지는지 또 확인한다.&lt;/p&gt;
 &lt;p&gt;예를 들어, 다음과 같이 입력되었을 경우를 생각해보자.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;6 10
 
@@ -98,12 +95,12 @@
 &lt;li&gt;(3, 5) - 8번&lt;/li&gt;
 &lt;li&gt;(4, 5) - 9번&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;먼저, isPaired 배열은 초기에 모두 false인데, 0번 pair를 수용한다고 하면, **isPaired[0]**과 isPaired[1]은 true이다.&lt;/p&gt;
-&lt;p&gt;또 다음 1번 pair가 수용되는지 체크하는데, isPaired[0]이 true이므로 다음 index로 넘어간다.&lt;/p&gt;
-&lt;p&gt;2번, 3번, 4번도 isPaired[1]이 true이므로 다음 index로 넘어가면, 5번 index의 pair (2,3)를 체크한다.&lt;/p&gt;
-&lt;p&gt;isPaired[2]와 isPaired[3]은 false로 짝궁이 없으므로 둘다 true로 바꿔준 후 다음 index를 마찬가지로 계속 검사한다.&lt;/p&gt;
-&lt;p&gt;이렇게 검사하다가, isPaired 배열이 모두 true로 모두 짝이 있는 경우가 될 경우 한 가지 경우를 찾은 것이므로 Answer를 1 늘려주고 return 시켜준다.&lt;/p&gt;
-&lt;p&gt;모두 검사했는데 isPaired 배열이 모두 true는 아닌 경우에는 모두 짝이 있는 경우가 아니므로 단순 return 시켜준다.&lt;/p&gt;
+&lt;p&gt;먼저, &lt;code&gt;isPaired&lt;/code&gt; 배열은 초기에 모두 &lt;code&gt;false&lt;/code&gt;인데, 0번 &lt;code&gt;pair&lt;/code&gt;를 수용한다고 하면, &lt;code&gt;isPaired[0]&lt;/code&gt;과 &lt;code&gt;isPaired[1]&lt;/code&gt;은 &lt;code&gt;true&lt;/code&gt;이다.&lt;/p&gt;
+&lt;p&gt;또 다음 1번 &lt;code&gt;pair&lt;/code&gt;가 수용되는지 체크하는데, &lt;code&gt;isPaired[0]&lt;/code&gt;이 true이므로 다음 index로 넘어간다.&lt;/p&gt;
+&lt;p&gt;2번, 3번, 4번도 &lt;code&gt;isPaired[1]&lt;/code&gt;이 &lt;code&gt;true&lt;/code&gt;이므로 다음 index로 넘어가면, 5번 index의 pair (2,3)를 체크한다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;isPaired[2]&lt;/code&gt;와 &lt;code&gt;isPaired[3]&lt;/code&gt;은 &lt;code&gt;false&lt;/code&gt;로 짝궁이 없으므로 둘다 &lt;code&gt;true&lt;/code&gt;로 바꿔준 후 다음 index를 마찬가지로 계속 검사한다.&lt;/p&gt;
+&lt;p&gt;이렇게 검사하다가, &lt;code&gt;isPaired&lt;/code&gt; 배열이 모두 &lt;code&gt;true&lt;/code&gt;로 모두 짝이 있는 경우가 될 경우 한 가지 경우를 찾은 것이므로 &lt;code&gt;Answer&lt;/code&gt;를 1 늘려주고 return 시켜준다.&lt;/p&gt;
+&lt;p&gt;모두 검사했는데 &lt;code&gt;isPaired&lt;/code&gt; 배열이 모두 &lt;code&gt;true&lt;/code&gt;는 아닌 경우에는 모두 짝이 있는 경우가 아니므로 단순 return 시켜준다.&lt;/p&gt;
 &lt;p&gt;이와같은 코드가 다음과 같다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;recursive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pairIdx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
@@ -152,7 +149,7 @@
 &lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
 &lt;p&gt;가능한 경우를 모두 탐색해보아야 주어진 단어들이 BOGGLE 게임판에 존재하는지 확인할 수 있다.&lt;/p&gt;
 &lt;p&gt;예를 들어, 위의 게임판에서 PRETTY라는 단어를 찾기 위해서는 먼저 P 를 찾고, 그 주변(상하좌우, 대각선)에 그 다음 character R가 존재하는지 확인해보아야 한다. 이와 같은 과정을 계속하여 반복하면 주어진 단어가 존재하는지 확인할 수 있다.&lt;/p&gt;
-&lt;p&gt;즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L &lt;em&gt;&lt;strong&gt;P&lt;/strong&gt;&lt;/em&gt; (gameBoard[0][3]) 에서 character P를 찾고, P의 주변 에서 character &lt;em&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/em&gt; (gameBoard[1][2])를 찾고, 그 주변에서 또 character &lt;em&gt;&lt;strong&gt;E&lt;/strong&gt;&lt;/em&gt; (gameBoard[2][3])를 찾고 &amp;hellip; (계속)&lt;/p&gt;
+&lt;p&gt;즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L &lt;em&gt;&lt;strong&gt;P&lt;/strong&gt;&lt;/em&gt; (&lt;code&gt;gameBoard[0][3]&lt;/code&gt;) 에서 character P를 찾고, P의 주변 에서 character &lt;em&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/em&gt; (&lt;code&gt;gameBoard[1][2]&lt;/code&gt;)를 찾고, 그 주변에서 또 character &lt;em&gt;&lt;strong&gt;E&lt;/strong&gt;&lt;/em&gt; (&lt;code&gt;gameBoard[2][3]&lt;/code&gt;)를 찾고 &amp;hellip; (계속)&lt;/p&gt;
 &lt;p&gt;위와 같은 과정을 반복하여 수행하기 위해서 재귀함수를 이용하여 코드를 작성하면 된다. 그렇게 작성한 코드는 다음과 같다.&lt;/p&gt;
 &lt;h3 id=&#34;hasword-method-dp-사용x&#34;&gt;hasWord method (DP 사용X)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hasWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coordinate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coordinate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
@@ -168,11 +165,12 @@
 	&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;fail.png&#34; alt=&#34;memoization 없이 제출한 결과 - 시간초과&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;memoization 없이 제출한 결과 - 시간초과&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;fail.png&#34; alt=&#34;memoization 없이 제출한 결과 - 시간초과&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;하지만 위와 같이 오직 재귀로만 작성하면, 이미 순회한 부분을 반복해서 다시 순회하는 과정(overlapping subproblems)이 생길 수 있어 비효율적이다. 따라서 이미 순회한 부분은 단어가 완성되는지의 여부를 저장(memoization)해주면 같은 연산을 피할 수 있다.&lt;/p&gt;
-&lt;p&gt;따라서, 3차원 배열 cache를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.&lt;/p&gt;
-&lt;p&gt;즉, cache[x][y][index] = (gameBoard[x][y] 좌표에서 word.subString(index)를 완성시킬수 있는지의 여부) 이다.&lt;/p&gt;
-&lt;p&gt;단어가 완성된다면 true, 완성시킬 수 없다면 false, 아직 순회한 적이 없다면 null로 저장해주었다. 코드는 다음과 같다.&lt;/p&gt;
+&lt;p&gt;따라서, 3차원 배열 &lt;code&gt;cache&lt;/code&gt;를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.&lt;/p&gt;
+&lt;p&gt;즉, &lt;code&gt;cache[x][y][index]&lt;/code&gt; = (&lt;code&gt;gameBoard[x][y]&lt;/code&gt; 좌표에서 &lt;code&gt;word.subString(index)&lt;/code&gt;를 완성시킬수 있는지의 여부) 이다.&lt;/p&gt;
+&lt;p&gt;단어가 완성된다면 &lt;code&gt;true&lt;/code&gt;, 완성시킬 수 없다면 &lt;code&gt;false&lt;/code&gt;, 아직 순회한 적이 없다면 &lt;code&gt;null&lt;/code&gt;로 저장해주었다. 코드는 다음과 같다.&lt;/p&gt;
 &lt;h3 id=&#34;hasword-method-dp-사용o&#34;&gt;hasWord method (DP 사용O)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hasWord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coordinate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coordinate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;word&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
@@ -197,7 +195,8 @@
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;cache&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;coordinate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;coordinate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;pass.png&#34; alt=&#34;memoization 적용한 결과 - Pass&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;memoization 적용한 결과 - Pass&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;pass.png&#34; alt=&#34;memoization 적용한 결과 - Pass&#34;  /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;코드-전문---github-링크httpsgithubcomparkjbdevalgostudyblobmasterapssch06bogglesrcmainjava&#34;&gt;코드 전문 - &lt;a class=&#34;link&#34; href=&#34;https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOGGLE/src/Main.java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github 링크&lt;/a&gt;&lt;/h2&gt;
 </description>
