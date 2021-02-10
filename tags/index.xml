@@ -6,85 +6,31 @@
     <description>Recent content in Tags on ParkJB Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.parkjb.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Nov 2020 16:03:13 +0900</lastBuildDate><atom:link href="https://blog.parkjb.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>css</title>
-      <link>https://blog.parkjb.com/tags/css/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>algorithm</title>
+      <link>https://blog.parkjb.com/tags/algorithm/</link>
+      <pubDate>Fri, 20 Nov 2020 16:03:13 +0900</pubDate>
       
-      <guid>https://blog.parkjb.com/tags/css/</guid>
+      <guid>https://blog.parkjb.com/tags/algorithm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>html</title>
-      <link>https://blog.parkjb.com/tags/html/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>exhaustive search</title>
+      <link>https://blog.parkjb.com/tags/exhaustive-search/</link>
+      <pubDate>Fri, 20 Nov 2020 16:03:13 +0900</pubDate>
       
-      <guid>https://blog.parkjb.com/tags/html/</guid>
+      <guid>https://blog.parkjb.com/tags/exhaustive-search/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>markdown</title>
-      <link>https://blog.parkjb.com/tags/markdown/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>dynamic programming</title>
+      <link>https://blog.parkjb.com/tags/dynamic-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.parkjb.com/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>https://blog.parkjb.com/tags/themes/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>privacy</title>
-      <link>https://blog.parkjb.com/tags/privacy/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/privacy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shortcodes</title>
-      <link>https://blog.parkjb.com/tags/shortcodes/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tag with whitespaces</title>
-      <link>https://blog.parkjb.com/tags/tag-with-whitespaces/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/tag-with-whitespaces/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>text</title>
-      <link>https://blog.parkjb.com/tags/text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/text/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>emoji</title>
-      <link>https://blog.parkjb.com/tags/emoji/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.parkjb.com/tags/emoji/</guid>
+      <guid>https://blog.parkjb.com/tags/dynamic-programming/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dynamic programming on ParkJB Blog</title>
+    <link>https://blog.parkjb.com/tags/dynamic-programming/</link>
+    <description>Recent content in dynamic programming on ParkJB Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language><atom:link href="https://blog.parkjb.com/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BOGGLE</title>
+      <link>https://blog.parkjb.com/post/algospot-boggle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.parkjb.com/post/algospot-boggle/</guid>
+      <description>문제읽기 문제요약 BOGGLE 게임은 게임판의 한 글자에서 시작해서 펜을 떼지않고 이어서 영어단어를 찾아내는 게임
+펜은 상화좌우, 대각선으로 이동할 수 있고, 글자를 건너뛸 수는 없음
+단어들의 목록이 주어졌을 때 BOGGLE게임에서 단어를 찾을 수 있는지 여부를 출력하는 프로그램
+풀이 가능한 경우를 모두 탐색해보아야 주어진 단어들이 BOGGLE 게임판에 존재하는지 확인할 수 있다.
+예를 들어, 위의 게임판에서 PRETTY라는 단어를 찾기 위해서는 먼저 P 를 찾고, 그 주변(상하좌우, 대각선)에 그 다음 character R가 존재하는지 확인해보아야 한다.</description>
+    </item>
+    
+  </channel>
+</rss>

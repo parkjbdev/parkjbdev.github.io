@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hugo, the world&#39;s fastest framework for building websites'><title>About</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='문제읽기 문제요약 게임보드가 주어졌을 때, &amp;lsquo;ㄱ&amp;rsquo;모양 도형을 이용하여 게임보드를 채울 수 있는 방법의 수를 구하는 문제이다.
+풀이 map에서 벽이거나 &amp;lsquo;ㄱ&amp;rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다. 즉, 과정을 예시를 들자면, 다음과 같다.
+1. 다음 빈 좌표로 이동 2. &#39;ㄱ&#39;모양 도형 채워넣기 (방향 돌려가면서 반복!!) 2-1. 다음 빈 좌표로 이동 2-2. &#39;ㄱ&#39;모양 도형 채워넣기 2-2-1. 다음 빈 좌표로 이동 2-2-2. &#39;ㄱ&#39;모양 도형 채워넣기 (계속 깊게 반복하다가 return) 2-2-3.'><title>BOARDCOVER</title>
 
-<link rel='canonical' href='https://blog.parkjb.com/about/'>
+<link rel='canonical' href='https://blog.parkjb.com/post/algospot-boardcover/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='About'>
-<meta property='og:description' content='Hugo, the world&#39;s fastest framework for building websites'>
-<meta property='og:url' content='https://blog.parkjb.com/about/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='BOARDCOVER'>
+<meta property='og:description' content='문제읽기 문제요약 게임보드가 주어졌을 때, &amp;lsquo;ㄱ&amp;rsquo;모양 도형을 이용하여 게임보드를 채울 수 있는 방법의 수를 구하는 문제이다.
+풀이 map에서 벽이거나 &amp;lsquo;ㄱ&amp;rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다. 즉, 과정을 예시를 들자면, 다음과 같다.
+1. 다음 빈 좌표로 이동 2. &#39;ㄱ&#39;모양 도형 채워넣기 (방향 돌려가면서 반복!!) 2-1. 다음 빈 좌표로 이동 2-2. &#39;ㄱ&#39;모양 도형 채워넣기 2-2-1. 다음 빈 좌표로 이동 2-2-2. &#39;ㄱ&#39;모양 도형 채워넣기 (계속 깊게 반복하다가 return) 2-2-3.'>
+<meta property='og:url' content='https://blog.parkjb.com/post/algospot-boardcover/'>
 <meta property='og:site_name' content='ParkJB Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2021-02-10T16:15:13&#43;09:00'/><meta property='article:modified_time' content='2021-02-10T16:15:13&#43;09:00'/>
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="Hugo, the world&#39;s fastest framework for building websites">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='algorithm' /><meta property='article:tag' content='exhaustive search' /><meta property='article:published_time' content='2020-11-20T16:03:13&#43;09:00'/><meta property='article:modified_time' content='2020-11-20T16:03:13&#43;09:00'/>
+<meta name="twitter:title" content="BOARDCOVER">
+<meta name="twitter:description" content="문제읽기 문제요약 게임보드가 주어졌을 때, &amp;lsquo;ㄱ&amp;rsquo;모양 도형을 이용하여 게임보드를 채울 수 있는 방법의 수를 구하는 문제이다.
+풀이 map에서 벽이거나 &amp;lsquo;ㄱ&amp;rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다. 즉, 과정을 예시를 들자면, 다음과 같다.
+1. 다음 빈 좌표로 이동 2. &#39;ㄱ&#39;모양 도형 채워넣기 (방향 돌려가면서 반복!!) 2-1. 다음 빈 좌표로 이동 2-2. &#39;ㄱ&#39;모양 도형 채워넣기 2-2-1. 다음 빈 좌표로 이동 2-2-2. &#39;ㄱ&#39;모양 도형 채워넣기 (계속 깊게 반복하다가 return) 2-2-3.">
     </head>
-    <body class="article-page keep-sidebar">
+    <body class="">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -35,7 +41,7 @@
             document.body.dataset.scheme = 'light';
         }
     })();
-</script><div class="container main-container flex on-phone--column extended ">
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
         <span class="hamburger-box">
@@ -89,7 +95,7 @@
         
         
 
-        <li  class='current' >
+        <li >
             <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -168,20 +174,37 @@
 </aside>
 
             <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://blog.parkjb.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
     <article class="main-article">
     <header class="article-header">
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/algorithm/" style="background-color: #2a9d8f; color: #fff;">
+                Algorithm
+            </a>
+        
+    </header>
+    
 
     <h2 class="article-title">
-        <a href="/about/">About</a>
+        <a href="/post/algospot-boardcover/">BOARDCOVER</a>
     </h2>
 
-    
-    <h3 class="article-subtitle">
-        Hugo, the world&#39;s fastest framework for building websites
-    </h3>
     <footer class="article-time">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -191,32 +214,73 @@
 
 
 
-        <time class="article-time--published">Feb 10, 2021</time>
+        <time class="article-time--published">Nov 20, 2020</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <p>Written in Go, Hugo is an open source static site generator available under the <a class="link" href="https://github.com/gohugoio/hugo/blob/master/LICENSE"  target="_blank" rel="noopener"
-    >Apache Licence 2.0.</a> Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.</p>
-<p>Hugo makes use of a variety of open source projects including:</p>
-<ul>
-<li><a href="https://github.com/yuin/goldmark">https://github.com/yuin/goldmark</a></li>
-<li><a href="https://github.com/alecthomas/chroma">https://github.com/alecthomas/chroma</a></li>
-<li><a href="https://github.com/muesli/smartcrop">https://github.com/muesli/smartcrop</a></li>
-<li><a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a></li>
-<li><a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a></li>
-</ul>
-<p>Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.</p>
-<p>Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.</p>
-<p>Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.</p>
-<p>Learn more and contribute on <a class="link" href="https://github.com/parkjbdev"  target="_blank" rel="noopener"
-    >GitHub</a>.</p>
+    <h2 id="문제읽기httpswwwalgospotcomjudgeproblemreadboardcover"><a class="link" href="https://www.algospot.com/judge/problem/read/BOARDCOVER"  target="_blank" rel="noopener"
+    >문제읽기</a></h2>
+<h2 id="문제요약">문제요약</h2>
+<p><img src="http://algospot.com/media/judge-attachments/2b7bfee35cbec2f4e799bb011ac18f69/03.png" alt=""  /></p>
+<p>게임보드가 주어졌을 때, &lsquo;ㄱ&rsquo;모양 도형을 이용하여 게임보드를 채울 수 있는 방법의 수를 구하는 문제이다.</p>
+<h2 id="풀이">풀이</h2>
+<p>map에서 벽이거나 &lsquo;ㄱ&rsquo;모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다.
+즉, 과정을 예시를 들자면, 다음과 같다.</p>
+<pre><code>1. 다음 빈 좌표로 이동
+2. 'ㄱ'모양 도형 채워넣기 (방향 돌려가면서 반복!!)
+    2-1. 다음 빈 좌표로 이동
+    2-2. 'ㄱ'모양 도형 채워넣기
+        2-2-1. 다음 빈 좌표로 이동
+        2-2-2. 'ㄱ'모양 도형 채워넣기
+            (계속 깊게 반복하다가 return)
+        2-2-3. 'ㄱ'모양 도형 지우기
+    2-3. 'ㄱ'모양 도형 지우기
+3. 'ㄱ'모양 도형 지우기
+</code></pre>
+<p>위의 예시에서처럼 크게 &lsquo;좌표이동, 도형채우기, 재귀, 도형지우기&rsquo;의 과정을로 진행된다.</p>
+<p>이를 코드로 구현하면 다음과 같다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">recursive</span><span class="o">(</span><span class="n">Pair</span> <span class="n">coord</span><span class="o">)</span>
+<span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">isAllFilled</span><span class="o">())</span>
+	<span class="o">{</span>
+		<span class="n">Answer</span><span class="o">++;</span>
+		<span class="k">return</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="n">coord</span> <span class="o">=</span> <span class="n">nextPair</span><span class="o">(</span><span class="n">coord</span><span class="o">);</span>
+
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">blockType</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">blockType</span> <span class="o">&lt;</span> <span class="n">blocks</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">blockType</span><span class="o">++)</span>
+	<span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">isFillPossible</span><span class="o">(</span><span class="n">coord</span><span class="o">,</span> <span class="n">blockType</span><span class="o">))</span>
+		<span class="o">{</span>
+			<span class="n">fillBlock</span><span class="o">(</span><span class="n">coord</span><span class="o">,</span> <span class="n">blockType</span><span class="o">);</span>
+			<span class="n">recursive</span><span class="o">(</span><span class="n">coord</span><span class="o">);</span>
+			<span class="n">deleteBlock</span><span class="o">(</span><span class="n">coord</span><span class="o">,</span> <span class="n">blockType</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>이번문제도 책을 보지않고 풀었다ㅎㅎ 특정기능은 메소드로 따로 빼주는거를 좋아하는지라 수행하는 기능에 따라서 나누어 주었고, 덕분에 가독성적인 측면에서 이득이 있었다.</p>
+<p>​</p>
+<h2 id="코드-전문">코드 전문</h2>
+<blockquote>
+<p><a class="link" href="https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOARDCOVER/src/Main.java"  target="_blank" rel="noopener"
+    >Github 링크</a> 참조</p>
+</blockquote>
 
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/algorithm/">algorithm</a>
+        
+            <a href="/tags/exhaustive-search/">exhaustive search</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -228,14 +292,51 @@
 
 
 
-        <span>CC BY-NC-ND</span>
+        <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
     </footer>
 
     
 </article>
 
-     
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">관련 글</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/algospot-picnic/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PICNIC</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/algospot-boggle/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BOGGLE</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
         
     <div class="disqus-container">
     <div id="disqus_thread"></div>
@@ -295,8 +396,6 @@
         <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> 테마 사용 중
     </section>
 </footer>
-
-    
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
@@ -365,7 +464,6 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
-
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
