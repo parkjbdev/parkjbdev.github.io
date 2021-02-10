@@ -5,7 +5,7 @@ paginate: 5
 title: ParkJB Blog
 
 # Change it to your Disqus shortname before using
-disqusShortname: hugo-theme-stack
+disqusShortname: parkjb-blog
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn
