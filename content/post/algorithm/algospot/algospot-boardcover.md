@@ -16,7 +16,7 @@ slug: algospot-boardcover
 
 ## 풀이
 
-map에서 벽이거나 'ㄱ'모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다.
+```map```에서 벽이거나 'ㄱ'모양 도형이 채워지지 빈 공간을 차례대로 순회하면서 해당 위치에 4가지 블럭을 대입해보면서 계산하면 된다.
 즉, 과정을 예시를 들자면, 다음과 같다.
 
 
@@ -61,8 +61,5 @@ private void recursive(Pair coord)
 ```
 
 이번문제도 책을 보지않고 풀었다ㅎㅎ 특정기능은 메소드로 따로 빼주는거를 좋아하는지라 수행하는 기능에 따라서 나누어 주었고, 덕분에 가독성적인 측면에서 이득이 있었다.
-
 ​
-## 코드 전문
-> [Github 링크](https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOARDCOVER/src/Main.java) 참조
-
+## 코드 전문 - [Github 링크](https://github.com/parkjbdev/AlgoStudy/blob/master/APSS/CH06/BOARDCOVER/src/Main.java)

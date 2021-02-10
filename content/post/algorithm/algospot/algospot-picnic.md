@@ -20,9 +20,9 @@ slug: algospot-picnic
 
 책을 안보고 풀었다ㅎㅎ 개인적으로는 책보다 더 나은 코드를 작성한 것 같아 뿌듯하다.
 
-먼저, 학생의 수가 홀수일 경우, 짝이 없는 학생이 반드시 발생하므로, solve method에서 바로 return 시켜주었다. 홀수가 아닐 경우 recursive method에서 문제를 해결하도록 하였다. 짝이 있는 학생들과 짝이 정해지지 않은 학생들을 구분하기 위해서 isPaired boolean array에서 짝이 있는 학생들의 경우 true, 짝이 없는 학생들의 경우 false로 저장하도록 하였다.
+먼저, 학생의 수가 홀수일 경우, 짝이 없는 학생이 반드시 발생하므로, solve method에서 바로 return 시켜주었다. 홀수가 아닐 경우 recursive method에서 문제를 해결하도록 하였다. 짝이 있는 학생들과 짝이 정해지지 않은 학생들을 구분하기 위해서 ```isPaired``` boolean array에서 짝이 있는 학생들의 경우 ```true```, 짝이 없는 학생들의 경우 ```false```로 저장하도록 하였다.
 
-recursive 메소드는 pairs array에 저장되어 있는 짝꿍이 가능한 pair들을 입력받은 순서대로 순회하면서, 해당 pair를 이용하였을 때 짝이 만들어 지면 pairs array의 다음 인덱스 pair에서도 recursive 메소드를 돌면서 해당 pair를 이용하였을 때 짝이 만들어지는지 또 확인한다.
+recursive 메소드는 ```pairs``` array에 저장되어 있는 짝꿍이 가능한 ```pair```들을 입력받은 순서대로 순회하면서, 해당 ```pair```를 이용하였을 때 짝이 만들어 지면 ```pairs``` array의 다음 인덱스 ```pair```에서도 recursive 메소드를 돌면서 해당 ```pair```를 이용하였을 때 짝이 만들어지는지 또 확인한다.
 
 예를 들어, 다음과 같이 입력되었을 경우를 생각해보자.
 
@@ -43,17 +43,17 @@ recursive 메소드는 pairs array에 저장되어 있는 짝꿍이 가능한 pa
 - (3, 5) - 8번
 - (4, 5) - 9번
 
-먼저, isPaired 배열은 초기에 모두 false인데, 0번 pair를 수용한다고 하면, **isPaired[0]**과 isPaired\[1\]은 true이다.
+먼저, ```isPaired``` 배열은 초기에 모두 ```false```인데, 0번 ```pair```를 수용한다고 하면, ```isPaired[0]```과 ```isPaired[1]```은 ```true```이다.
 
-또 다음 1번 pair가 수용되는지 체크하는데, isPaired\[0\]이 true이므로 다음 index로 넘어간다.
+또 다음 1번 ```pair```가 수용되는지 체크하는데, ```isPaired[0]```이 true이므로 다음 index로 넘어간다.
 
-2번, 3번, 4번도 isPaired\[1\]이 true이므로 다음 index로 넘어가면, 5번 index의 pair (2,3)를 체크한다.
+2번, 3번, 4번도 ```isPaired[1]```이 ```true```이므로 다음 index로 넘어가면, 5번 index의 pair (2,3)를 체크한다.
 
-isPaired\[2\]와 isPaired\[3\]은 false로 짝궁이 없으므로 둘다 true로 바꿔준 후 다음 index를 마찬가지로 계속 검사한다.
+```isPaired[2]```와 ```isPaired[3]```은 ```false```로 짝궁이 없으므로 둘다 ```true```로 바꿔준 후 다음 index를 마찬가지로 계속 검사한다.
 
-이렇게 검사하다가, isPaired 배열이 모두 true로 모두 짝이 있는 경우가 될 경우 한 가지 경우를 찾은 것이므로 Answer를 1 늘려주고 return 시켜준다.
+이렇게 검사하다가, ```isPaired``` 배열이 모두 ```true```로 모두 짝이 있는 경우가 될 경우 한 가지 경우를 찾은 것이므로 ```Answer```를 1 늘려주고 return 시켜준다.
 
-모두 검사했는데 isPaired 배열이 모두 true는 아닌 경우에는 모두 짝이 있는 경우가 아니므로 단순 return 시켜준다.
+모두 검사했는데 ```isPaired``` 배열이 모두 ```true```는 아닌 경우에는 모두 짝이 있는 경우가 아니므로 단순 return 시켜준다.
 
 이와같은 코드가 다음과 같다.
 

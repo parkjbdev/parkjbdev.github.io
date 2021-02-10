@@ -24,7 +24,7 @@ BOGGLE 게임은 게임판의 한 글자에서 시작해서 펜을 떼지않고 
 
 예를 들어, 위의 게임판에서 PRETTY라는 단어를 찾기 위해서는 먼저 P 를 찾고, 그 주변(상하좌우, 대각선)에 그 다음 character R가 존재하는지 확인해보아야 한다. 이와 같은 과정을 계속하여 반복하면 주어진 단어가 존재하는지 확인할 수 있다.
 
-즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L _**P**_ (gameBoard\[0\]\[3\]) 에서 character P를 찾고, P의 주변 에서 character _**R**_ (gameBoard\[1\]\[2\])를 찾고, 그 주변에서 또 character _**E**_ (gameBoard\[2\]\[3\])를 찾고 ... (계속)
+즉, (a)의 게임판을 차례대로 순회하면서 P가 나올때까지 찾으면 U R L _**P**_ (```gameBoard[0][3]```) 에서 character P를 찾고, P의 주변 에서 character _**R**_ (```gameBoard[1][2]```)를 찾고, 그 주변에서 또 character _**E**_ (```gameBoard[2][3]```)를 찾고 ... (계속)
 
 위와 같은 과정을 반복하여 수행하기 위해서 재귀함수를 이용하여 코드를 작성하면 된다. 그렇게 작성한 코드는 다음과 같다.
 
@@ -45,18 +45,19 @@ public static boolean hasWord(Coordinate coordinate, String word, int index)
 	return false;
 }
 ```
+*memoization 없이 제출한 결과 - 시간초과*
 
- ![memoization 없이 제출한 결과 - 시간초과](fail.png)
+![memoization 없이 제출한 결과 - 시간초과](fail.png)
 
 
 
 하지만 위와 같이 오직 재귀로만 작성하면, 이미 순회한 부분을 반복해서 다시 순회하는 과정(overlapping subproblems)이 생길 수 있어 비효율적이다. 따라서 이미 순회한 부분은 단어가 완성되는지의 여부를 저장(memoization)해주면 같은 연산을 피할 수 있다.
 
-따라서, 3차원 배열 cache를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.
+따라서, 3차원 배열 ```cache```를 두어, 특정 좌표 x, y에서 word의 index이후에 순회하였을 때, 단어가 완성되는지의 여부를 저장하였다.
 
-즉, cache\[x\]\[y\]\[index\] = (gameBoard\[x\]\[y\] 좌표에서 word.subString(index)를 완성시킬수 있는지의 여부) 이다.
+즉, ```cache[x][y][index]``` = (```gameBoard[x][y]``` 좌표에서 ```word.subString(index)```를 완성시킬수 있는지의 여부) 이다.
 
-단어가 완성된다면 true, 완성시킬 수 없다면 false, 아직 순회한 적이 없다면 null로 저장해주었다. 코드는 다음과 같다.
+단어가 완성된다면 ```true```, 완성시킬 수 없다면 ```false```, 아직 순회한 적이 없다면 ```null```로 저장해주었다. 코드는 다음과 같다.
 
 ### hasWord method (DP 사용O)
 
@@ -86,6 +87,7 @@ public static boolean hasWord(Coordinate coordinate, String word, int index)
 	return false;
 }
 ```
+*memoization 적용한 결과 - Pass*
 
  ![memoization 적용한 결과 - Pass](pass.png)
 
