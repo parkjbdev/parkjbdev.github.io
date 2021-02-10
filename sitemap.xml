@@ -63,16 +63,18 @@
   </url>
   
   <url>
-    <loc>https://blog.parkjb.com/archives/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.parkjb.com/post/algospot-boggle/</loc>
+    <lastmod>2020-11-06T15:31:13+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.parkjb.com/tags/dynamic-programming/</loc>
+    <lastmod>2020-11-06T15:31:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.parkjb.com/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>

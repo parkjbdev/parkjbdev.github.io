@@ -5,11 +5,12 @@
     <link>https://blog.parkjb.com/tags/dynamic-programming/</link>
     <description>Recent content in dynamic programming on ParkJB Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language><atom:link href="https://blog.parkjb.com/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 06 Nov 2020 15:31:13 +0900</lastBuildDate><atom:link href="https://blog.parkjb.com/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BOGGLE</title>
       <link>https://blog.parkjb.com/post/algospot-boggle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 06 Nov 2020 15:31:13 +0900</pubDate>
       
       <guid>https://blog.parkjb.com/post/algospot-boggle/</guid>
       <description>문제읽기 문제요약 BOGGLE 게임은 게임판의 한 글자에서 시작해서 펜을 떼지않고 이어서 영어단어를 찾아내는 게임
