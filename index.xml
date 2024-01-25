@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>🪴 PARKJB TECH</title>
+      <link>https://tech.parkjb.com</link>
+      <description>Last 10 notes on 🪴 PARKJB TECH</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>WePlan</title>
+    <link>https://tech.parkjb.com/Projects/WePlan</link>
+    <guid>https://tech.parkjb.com/Projects/WePlan</guid>
+    <description></description>
+    <pubDate>Thu, 25 Jan 2024 16:13:03 GMT</pubDate>
+  </item><item>
+    <title>02_VGA</title>
+    <link>https://tech.parkjb.com/Projects/cosmOS/02_VGA</link>
+    <guid>https://tech.parkjb.com/Projects/cosmOS/02_VGA</guid>
+    <description>VGA Text Mode § VGA Text Buffer § VGA Text Buffer: 25 rows X 80 cols Each array entry with following format | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | | ---------------- | --- | --- | --- | --- | --- | --- | --- | ---------------- | --- | --- | --- | ---------------- | --- | --- | ----- | | ASCII code point | &lt; | &lt; | &lt; | &lt; | &lt; | &lt; | &lt; | Foreground Color | &lt; | &lt; | &lt; | Background Color | &lt; | &lt; | Blink | First Byte: ASCII (exactly, cp437) VGA text buffer is accessible via memory-mapped I/O to the address 0xb8000 Directly access the Text Buffer on the VGA hardware (without accessing RAM) We can Read/Write through normal memory operations to that address A Rust Module § Colors § // in src/vga_buffer.</description>
+    <pubDate>Thu, 25 Jan 2024 08:11:30 GMT</pubDate>
+  </item><item>
+    <title>cosmOS - Rust based OS</title>
+    <link>https://tech.parkjb.com/Projects/cosmOS/Introduction</link>
+    <guid>https://tech.parkjb.com/Projects/cosmOS/Introduction</guid>
+    <description>Project cosmOS is a project to create a new operating system for the x86 architecture. The project is currently in the planning phase. This project is based on the Writing an OS in Rust tutorial.</description>
+    <pubDate>Thu, 25 Jan 2024 08:06:02 GMT</pubDate>
+  </item><item>
+    <title>GetX vs BLoC vs Provider</title>
+    <link>https://tech.parkjb.com/Flutter/GetX-vs-BLoC-vs-Provider</link>
+    <guid>https://tech.parkjb.com/Flutter/GetX-vs-BLoC-vs-Provider</guid>
+    <description>Reference § Flutter 인기 아키텍처 라이브러리 3종 비교 분석 - GetX vs BLoC vs Provider.</description>
+    <pubDate>Thu, 25 Jan 2024 08:03:11 GMT</pubDate>
+  </item><item>
+    <title>Character Device Drivers</title>
+    <link>https://tech.parkjb.com/Linux-Kernel-Labs/Character-Device-Drivers</link>
+    <guid>https://tech.parkjb.com/Linux-Kernel-Labs/Character-Device-Drivers</guid>
+    <description>Overview § UNIX 시스템에서는 모든 장치들을 파일로 취급한다. /dev 디렉토리에는 시스템에 연결된 모든 장치들이 파일 형태로 존재하고, open, write, close, lseek, mmap 등의 시스템 콜을 통해 운영체제에서 device driver로 접근할 수 있다.</description>
+    <pubDate>Thu, 25 Jan 2024 07:58:30 GMT</pubDate>
+  </item><item>
+    <title>Kernel API</title>
+    <link>https://tech.parkjb.com/Linux-Kernel-Labs/Kernel-API</link>
+    <guid>https://tech.parkjb.com/Linux-Kernel-Labs/Kernel-API</guid>
+    <description>Kernel API § Memory Allocation: kmalloc &amp; kfree § #include &lt;linux/slab.h&gt; string = kmalloc(string_len + 1, GFP_KERNEL); kmalloc § void * kmalloc (size_t size, gfp_t flags); size_t size: how many bytes of memory are required.</description>
+    <pubDate>Thu, 25 Jan 2024 07:58:06 GMT</pubDate>
+  </item><item>
+    <title>mknod</title>
+    <link>https://tech.parkjb.com/Linux/mknod</link>
+    <guid>https://tech.parkjb.com/Linux/mknod</guid>
+    <description>Usage § mknod NAME TYPE [MAJOR MINOR] TYPE: b, c, p, u MAJOR: major number MINOR: minor number Create a character device § mknod /dev/zero c 1 5.</description>
+    <pubDate>Thu, 25 Jan 2024 07:57:03 GMT</pubDate>
+  </item><item>
+    <title>Cookie</title>
+    <link>https://tech.parkjb.com/Projects/Cookie</link>
+    <guid>https://tech.parkjb.com/Projects/Cookie</guid>
+    <description></description>
+    <pubDate>Thu, 25 Jan 2024 07:55:40 GMT</pubDate>
+  </item><item>
+    <title>Welcome!</title>
+    <link>https://tech.parkjb.com/</link>
+    <guid>https://tech.parkjb.com/</guid>
+    <description> Programming Languages § Frameworks, Platforms and Libraries § Severs &amp; Databases § Environments &amp; Tools § 학력 § 2015.03 ~ 2018.02 단국대학교 사범대학 부속고등학교 졸업 2018.</description>
+    <pubDate>Thu, 25 Jan 2024 07:07:29 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
