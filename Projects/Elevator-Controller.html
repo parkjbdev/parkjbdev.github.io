@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html><head><title>엘레베이터 컨트롤러</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="엘레베이터 컨트롤러"/><meta property="og:description" content="Specifications § The elevator control system consists of an elevator car and a controller. You should design 3 Verilog modules including a test bench."/><meta property="og:image" content="https://tech.parkjb.com/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Specifications § The elevator control system consists of an elevator car and a controller. You should design 3 Verilog modules including a test bench."/><meta name="generator" content="Quartz"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="Projects/Elevator-Controller"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h1 class="page-title "><a href="..">🪴 PARKJB TECH</a></h1><div class="spacer mobile-only"></div><div class="darkmode "><input class="toggle" id="darkmode-toggle" type="checkbox" tabindex="-1"/><label id="toggle-label-light" for="darkmode-toggle" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve"><title>Light mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg></label><label id="toggle-label-dark" for="darkmode-toggle" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve"><title>Dark mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></label></div><div class="search "><div id="search-icon"><p>Search</p><div></div><svg tabindex="0" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search</title><desc id="desc">Search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></div><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div id="results-container"></div></div></div></div><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;Flutter&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-APIs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-Labs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Linux-Commands&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cookie&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)/ARM&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/OS-Assignments&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/WePlan&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;삽질&quot;,&quot;collapsed&quot;:true}]"><h1>Explorer</h1><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Flutter"><a href="../Flutter" data-for="Flutter" class="folder-title">Flutter</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Flutter"><li><a href="../Flutter/Architecture" data-for="Flutter/Architecture">Architecture</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux"><a href="../Linux" data-for="Linux" class="folder-title">Linux</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-APIs"><a href="../Linux/Kernel-APIs" data-for="Kernel-APIs" class="folder-title">Kernel APIs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-APIs"><li><a href="../Linux/Kernel-APIs/kernel-↔-user" data-for="Linux/Kernel-APIs/kernel-↔-user">kernel ↔ user</a></li><li><a href="../Linux/Kernel-APIs/mknod" data-for="Linux/Kernel-APIs/mknod">mknod</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-Labs"><a href="../Linux/Kernel-Labs" data-for="Kernel-Labs" class="folder-title">Kernel Labs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-Labs"><li><a href="../Linux/Kernel-Labs/00_Introduction" data-for="Linux/Kernel-Labs/00_Introduction">Introduction</a></li><li><a href="../Linux/Kernel-Labs/03_Character-Device-Drivers" data-for="Linux/Kernel-Labs/03_Character-Device-Drivers">Character Device Drivers</a></li><li><a href="../Linux/Kernel-Labs/04_IO-access-and-Interrupts" data-for="Linux/Kernel-Labs/04_IO-access-and-Interrupts">I/O access and Interrupts</a></li><li><a href="../Linux/Kernel-Labs/05_Deferred-Work" data-for="Linux/Kernel-Labs/05_Deferred-Work">Deferred Work</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Linux-Commands"><a href="../Linux/Linux-Commands" data-for="Linux-Commands" class="folder-title">Linux Commands</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Linux-Commands"><li><a href="../Linux/Linux-Commands/Linux-BIOS" data-for="Linux/Linux-Commands/Linux-BIOS">Linux BIOS</a></li><li><a href="../Linux/Linux-Commands/rsync" data-for="Linux/Linux-Commands/rsync">rsync</a></li><li><a href="../Linux/Linux-Commands/Upgrade-Debian" data-for="Linux/Linux-Commands/Upgrade-Debian">Upgrade Debian</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects"><a href="../Projects" data-for="Projects" class="folder-title">Projects</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cookie"><a href="../Projects/Cookie" data-for="Cookie" class="folder-title">Cookie</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cookie"><li><a href="../Projects/Cookie/0314_아이디어발표" data-for="Projects/Cookie/0314_아이디어발표">3/14 아이디어 발표</a></li><li><a href="../Projects/Cookie/0328_발표" data-for="Projects/Cookie/0328_발표">3/28 5주차 발표</a></li><li><a href="../Projects/Cookie/0411_발표" data-for="Projects/Cookie/0411_발표">4/11 7주차 발표</a></li><li><a href="../Projects/Cookie/0425_발표" data-for="Projects/Cookie/0425_발표">4/25 9주차 발표</a></li><li><a href="../Projects/Cookie/0509_발표" data-for="Projects/Cookie/0509_발표">5/9 13주차 발표</a></li><li><a href="../Projects/Cookie/0523_발표" data-for="Projects/Cookie/0523_발표">5/23 15주차 발표</a></li><li><a href="../Projects/Cookie/0613_발표" data-for="Projects/Cookie/0613_발표">6/13 18주차 발표</a></li><li><a href="../Projects/Cookie/0620_최종발표" data-for="Projects/Cookie/0620_최종발표">6/20 1학기 최종발표</a></li><li><a href="../Projects/Cookie/0911_소개발표" data-for="Projects/Cookie/0911_소개발표">9/11 2학기 소개발표</a></li><li><a href="../Projects/Cookie/0925_발표" data-for="Projects/Cookie/0925_발표">9/25 4주차 발표</a></li><li><a href="../Projects/Cookie/1023_발표" data-for="Projects/Cookie/1023_발표">10/23 8주차 발표</a></li><li><a href="../Projects/Cookie/1106_발표" data-for="Projects/Cookie/1106_발표">11/6 10주차 발표</a></li><li><a href="../Projects/Cookie/1120_발표" data-for="Projects/Cookie/1120_발표">11/20 12주차 발표</a></li><li><a href="../Projects/Cookie/1211_발표" data-for="Projects/Cookie/1211_발표">12/11 14주차 발표</a></li><li><a href="../Projects/Cookie/1218_최종발표" data-for="Projects/Cookie/1218_최종발표">12/18 2학기 최종발표</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)"><a href="../Projects/Cosmos-(ongoing)" data-for="Cosmos-(ongoing)" class="folder-title">Cosmos (ongoing)</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)/ARM"><a href="../Projects/Cosmos-(ongoing)/ARM" data-for="ARM" class="folder-title">ARM</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)/ARM"><li><a href="../Projects/Cosmos-(ongoing)/ARM/Interrupt" data-for="Projects/Cosmos-(ongoing)/ARM/Interrupt">Interrupt</a></li><li><a href="../Projects/Cosmos-(ongoing)/ARM/Processor-Modes" data-for="Projects/Cosmos-(ongoing)/ARM/Processor-Modes">Processor Modes</a></li></ul></div></li><li><a href="../Projects/Cosmos-(ongoing)/01_Intro" data-for="Projects/Cosmos-(ongoing)/01_Intro">Intro</a></li><li><a href="../Projects/Cosmos-(ongoing)/02_Booting-(UEFI)" data-for="Projects/Cosmos-(ongoing)/02_Booting-(UEFI)">Booting (UEFI)</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/OS-Assignments"><a href="../Projects/OS-Assignments" data-for="OS-Assignments" class="folder-title">OS Assignments</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/OS-Assignments"><li><a href="../Projects/OS-Assignments/pa0" data-for="Projects/OS-Assignments/pa0">PA0: Warming up C programming</a></li><li><a href="../Projects/OS-Assignments/pa1" data-for="Projects/OS-Assignments/pa1">PA1: My Amazing Shell</a></li><li><a href="../Projects/OS-Assignments/pa2" data-for="Projects/OS-Assignments/pa2">PA2: Simulating Process Schedulers</a></li><li><a href="../Projects/OS-Assignments/pa3" data-for="Projects/OS-Assignments/pa3">PA3: Virtual Memory Simulator</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/WePlan"><a href="../Projects/WePlan" data-for="WePlan" class="folder-title">WePlan - 공동공간 예약 서비스</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/WePlan"><li><a href="../Projects/WePlan/01_Project-Proposal" data-for="Projects/WePlan/01_Project-Proposal">Project Proposal</a></li><li><a href="../Projects/WePlan/02_Requirements-Specification" data-for="Projects/WePlan/02_Requirements-Specification">Requirements Specification</a></li><li><a href="../Projects/WePlan/03_Design-Document" data-for="Projects/WePlan/03_Design-Document">Design Document</a></li><li><a href="../Projects/WePlan/04_Final-Project-Report" data-for="Projects/WePlan/04_Final-Project-Report">Final Project Report</a></li></ul></div></li><li><a href="../Projects/Doge_Driver" data-for="Projects/Doge_Driver">Doge Driver</a></li><li><a href="../Projects/Elevator-Controller" data-for="Projects/Elevator-Controller">엘레베이터 컨트롤러</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="삽질"><a href="../삽질" data-for="삽질" class="folder-title">🚧 삽질기</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="삽질"><li><a href="../삽질/2024-02-네트워크-삽질기" data-for="삽질/2024-02-네트워크-삽질기">2024-02 네트워크 삽질기</a></li><li><a href="../삽질/OpenCV-on-mac" data-for="삽질/OpenCV-on-mac">[OpenCV] Xcode OpenCV 설치 및 세팅</a></li><li><a href="../삽질/Rosetta+Conda-Env-Setting" data-for="삽질/Rosetta+Conda-Env-Setting">[Conda] Rosetta + Conda Env 세팅</a></li><li><a href="../삽질/Rosetta+Conda-ROS-Setting" data-for="삽질/Rosetta+Conda-ROS-Setting">[ROS] Rosetta + Conda로 ROS 세팅</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div><div class="recent-notes desktop-only"><h3>Recent Notes</h3><ul class="recent-ul"><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../삽질/OpenCV-on-mac" class="internal">[OpenCV] Xcode OpenCV 설치 및 세팅</a></h3></div><p class="meta">Mar 06, 2024</p><ul class="tags"></ul></div></li><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../Flutter/" class="internal">Flutter</a></h3></div><p class="meta">Mar 05, 2024</p><ul class="tags"></ul></div></li><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../Linux/" class="internal">Linux</a></h3></div><p class="meta">Mar 05, 2024</p><ul class="tags"></ul></div></li></ul></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container " aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Projects/">Projects</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>엘레베이터 컨트롤러</a></div></nav><h1 class="article-title ">엘레베이터 컨트롤러</h1><p class="content-meta ">Dec 01, 2023, 26 min read</p><ul class="tags "><li><a href="../tags/Verilog" class="internal tag-link">#Verilog</a></li><li><a href="../tags/DigitalSystem" class="internal tag-link">#DigitalSystem</a></li><li><a href="../tags/assignment" class="internal tag-link">#assignment</a></li></ul><div class="toc mobile-only"><button type="button" id="toc" class><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content"><ul class="overflow"><li class="depth-0"><a href="#specifications" data-for="specifications">Specifications</a></li><li class="depth-0"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-0"><a href="#controller-모듈" data-for="controller-모듈">Controller 모듈</a></li><li class="depth-1"><a href="#controller-모듈-state-정의" data-for="controller-모듈-state-정의">Controller 모듈 State 정의</a></li><li class="depth-1"><a href="#입력단" data-for="입력단">입력단</a></li><li class="depth-1"><a href="#타겟층-선택단-output-logic" data-for="타겟층-선택단-output-logic">타겟층 선택단 (output logic)</a></li><li class="depth-1"><a href="#타겟층-이동단" data-for="타겟층-이동단">타겟층 이동단</a></li><li class="depth-0"><a href="#elevator-모듈" data-for="elevator-모듈">Elevator 모듈</a></li><li class="depth-0"><a href="#테스트벤치" data-for="테스트벤치">테스트벤치</a></li><li class="depth-1"><a href="#예제-1" data-for="예제-1">예제 1</a></li><li class="depth-1"><a href="#예제-2" data-for="예제-2">예제 2</a></li></ul></div></div></div></div><article class="popover-hint"><div class="repo-card" data-repo="parkjbdev/ECE358_Elevator"></div>
+<h1 id="specifications">Specifications<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#specifications" class="internal alias"> §</a></h1>
+<ul>
+<li>The elevator control system consists of an elevator car and a controller.
+<ul>
+<li>You should design 3 Verilog modules including a test bench.</li>
+<li>All signal names in the codes should follow the below diagram.</li>
+</ul>
+</li>
+<li>The elevator operates in a 5th floor building.
+<img src="./attachments/Pasted-image-20240126235211.png" width="auto" height="auto"/></li>
+<li>Example specification
+<ol>
+<li>The elevator is currently on the 2nd floor.</li>
+<li>A user on the 4th floor pushes the down button.</li>
+<li>The elevator moves up to the 4th floor, and then the door opens.</li>
+<li>The user in the elevator pushes the 1st floor button.</li>
+<li>The door closes, and then move down to 1st floor, and finally opens.</li>
+</ol>
+</li>
+<li>Maximally 2 persons use the elevator control system.
+<ul>
+<li>For example, during the above procedure 3, if another user on the 5th floor pushes the down button, then the elevator moves up to 5th floor, and then 4th floor.</li>
+</ul>
+</li>
+<li>It takes one second for the elevator to move one floor.</li>
+<li>It takes one second for the door to open and close, respectively.</li>
+</ul>
+<h1 id="abstract">Abstract<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal alias"> §</a></h1>
+<p>이번 과제에서는 최대 2인의 사용자 입력에 대해서 엘레베이터가 방문해야 할 층을 스케줄링하고, 엘레베이터가 이동하는 로직을 구현해야 한다. 과제에서 주어진 모듈간의 큰 틀은 다음과 같았다.</p>
+<p><img src="./attachments/Pasted-image-20240126235220.png" width="auto" height="auto"/></p>
+<p>이를 세부적으로 구현하기 위하여 이와 같은 구조로 실제 모듈들을 설계하였다.</p>
+<p><img src="./attachments/Pasted-image-20240126235234.png" width="auto" height="auto"/></p>
+<p>Target_Controller는 엘레베이터를 목표한 층으로 이동시켜주는 Controller의 sub-module이다. 또, 동일한 Input으로 사용자의 입력을 저장하기 위해서 set_clk를 이용하여 posedge가 나타날 때에만 레지스터에 값을 저장하도록 제작하였다. 각각의 층수들은 3비트 unsigned binary로 나타내었다.</p>
+<h1 id="controller-모듈">Controller 모듈<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controller-모듈" class="internal alias"> §</a></h1>
+<h2 id="controller-모듈-state-정의">Controller 모듈 State 정의<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controller-모듈-state-정의" class="internal alias"> §</a></h2>
+<p>개발의 편의를 위하여 하나의 state에 대해 두가지 변수를 이용하였으며, 각각 done과 on_board이다. Done은 해당 비트의 사용자가 도착하였는지에 대한 정보이며, on_board는 해당 비트의 사용자가 현재 엘레베이터를 탑승하였는지에 대한 정보이다. 즉 예를 들어, done=00, on_board=11의 경우 2명의 사용자 모두 아직 목적지에 도착하지 못하였으며, 2명의 사용자 모두 엘레베이터를 탑승하고 있는 상황에 대한 state이다. 또 다른 예로 done=01, on_board=00의 경우 #2 사용자가 아직 목적지에 도착하지 못하였으며, 엘레베이터에 탑승하지도 못한 state임을 나타낸다. 이러한 notation을 토대로 state를 구상하면 다음과 같은 state들이 나올 수 있다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Done</th><th>On_board</th><th>설명</th></tr></thead><tbody><tr><td>11</td><td>00</td><td>사용자 입력이 없는 경우의 state</td></tr><tr><td>10</td><td>00</td><td>1번 사용자가 아직 탑승하지 않았고 엘레베이터를 기다리고 있는 state + 한명의 사용자 입력을 추가적으로 받을 수 있는 상태</td></tr><tr><td>10</td><td>01</td><td>1번 사용자가 엘레베이터에 탑승하여 도착층으로 이동하는 state+ 한명의 사용자 입력을 추가적으로 받을 수 있는 상태</td></tr><tr><td>01</td><td>00</td><td>2번 사용자가 아직 탑승하지 않았고 엘레베이터를 기다리고 있는 state+ 한명의 사용자 입력을 추가적으로 받을 수 있는 상태</td></tr><tr><td>01</td><td>10</td><td>2번 사용자가 엘레베이터에 탑승하여 도착층으로 이동하는 state+ 한명의 사용자 입력을 추가적으로 받을 수 있는 상태</td></tr><tr><td>00</td><td>00</td><td>1번 사용자와 2번 사용자가 둘 다 입력을 하였고, 둘 다 엘레베이터를 탑승하지 못하고 대기중인 state</td></tr><tr><td>00</td><td>01</td><td>1번 사용자와 2번 사용자가 둘 다 입력을 하였고, 1번 사용자는 엘레베이터에 탑승하여 자신의 도착층으로 이동중이고, 2번 사용자는 아직 엘레베이터에 탑승하지 않고 기다리고 있는 state</td></tr><tr><td>00</td><td>10</td><td>1번 사용자와 2번 사용자가 둘 다 입력을 하였고, 2번 사용자는 엘레베이터에 탑승하여 자신의 도착층으로 이동중이고, 1번 사용자는 아직 엘레베이터에 탑승하지 않고 기다리고 있는 state</td></tr><tr><td>00</td><td>11</td><td>1번 사용자와 2번 사용자가 둘 다 입력을 하였고, 둘 다 엘레베이터에 탑승하여 자신의 도착층으로 이동중인 state</td></tr><tr><td><del>11</del></td><td><del>01</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>11</del></td><td><del>10</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>11</del></td><td><del>11</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>10</del></td><td><del>10</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>10</del></td><td><del>11</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>01</del></td><td><del>01</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr><tr><td><del>01</del></td><td><del>11</del></td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다.</td></tr></tbody></table></div>
+<p>이를 토대로 State Diagram을 그려보면 다음과 같이 나타낼 수 있다.</p>
+<p><img src="./attachments/Pasted-image-20240126235328.png" width="auto" height="auto"/></p>
+<p>위의 2개의 bit가 done, 아래 2개의 bit가 on_board를 나타내며, transition하는 각각의 조건에 대해서는 색깔로 구분하였다. 또, 간단하게 표현하기 위해서 사용자가 입력하였을 때 state이 transition하는 것에 대해서는 표기하지 않았으며, 그 외 다른 조건들에 대해서는 자기 자신의 state을 유지하도록 하였다. 해당 state transition 만을 코드로 간략하게 표기하면 다음과 같다.</p>
+<p><img src="./attachments/Pasted-image-20240126235339.png" width="auto" height="auto"/></p>
+<p>Controller 모듈은 다음과 같이 크게 3가지 부분으로 구성된다.</p>
+<h2 id="입력단">입력단<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#입력단" class="internal alias"> §</a></h2>
+<p>입력단의 경우 최대 2명의 사용자가 동시에 이용할 수 있으므로, 출발층, 도착층, 방향 세가지 입력을 받아 이를 저장해두는 역할을 한다. State를 입력받아 저장하기 위해서 set_clk라는 클락을 정의하였으며, 해당 input에서 posedge가 있을 때에 대해서만 유효한 input으로 간주한다. Posedge 입력이 들어올 때마다 input을 받아 저장하는데, 이때 출발층과 도착층이 같거나, 올라가는 입력인데 출발층보다 도착층이 작거나 거꾸로 내려가는 입력인데 출발층이 도착층보다 클 경우에 대해서는 시뮬레이터에 경고 메시지를 발생시키고 해당 input을 무시하였다.</p>
+<p>올바른 입력이 들어왔을 때 done state를 확인하여 만약 00일 경우, 즉 2명의 사용자 모두 아직 도착하지 못했을 경우에 대해서는 엘레베이터가 아직 모든 일을 처리하지 못하였기 때문에 경고 메세지를 발생시키고 해당 Input을 무시하였다. 만약 done state의 두 비트중 어떤 하나라도 1일 경우 해당하는 레지스터에 사용자의 Input을 저장해 두었으며, done 의 두 비트중 1이였던 비트를 0으로 바꾸어 해당 동작을 수행해야 하는 상태로 state transition을 수행하였다.</p>
+<h2 id="타겟층-선택단-output-logic">타겟층 선택단 (output logic)<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#타겟층-선택단-output-logic" class="internal alias"> §</a></h2>
+<p>최대 2명의 사용자에 대해서 출발층과 도착층을 비교하여 현재 이동해야 할 타겟층을 선택하는 역할을 한다. 즉 현재 상태에 대해서 이동해야 할 타겟 층수를 결정하는 단계이다. 이를 결정하는 방법은 다음의 표와 같다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Done</th><th>On_board</th><th>출력</th></tr></thead><tbody><tr><td>11</td><td>00</td><td></td></tr><tr><td>10</td><td>00</td><td>1번 사용자의 출발층</td></tr><tr><td>10</td><td>01</td><td>1번 사용자의 도착층</td></tr><tr><td>01</td><td>00</td><td>2번 사용자의 출발층</td></tr><tr><td>01</td><td>10</td><td>2번 사용자의 도착층</td></tr><tr><td>00</td><td>00</td><td>상황에 따라 판단 <ul><li>1번, 2번 사용자 모두 위로 갈 경우: <strong>1번 사용자의 출발층과 2번 사용자의 출발층 중 더 작은 층수</strong></li><li>1번, 2번 사용자 모두 아래로 갈 경우: <strong>1 번 사용자의 출발층과 2번 사용자의 출발층 중 더 큰 층수</strong></li><li>1번, 2번 사용자가 서로 다른 방향으로 갈 경우: <strong>1 번 사용자의 출발층</strong>(이 경우 임의의 사용자 한명에 대해 먼저 처리하면 다른 State로 transition 되므로 1번층을 우선적으로 선택하였다. )</li></ul></td></tr><tr><td>00</td><td>01</td><td>상황에 따라 판단<ul><li>1번, 2번 사용자 모두 위로 갈 경우: 현재 1번 사용자만 탑승해 있으므로, 1번 사용자의 도착층과 2번 사용자의 출발층을 비교하여 1번 사용자의 도착층에 가는 중에 2번 사용자의 출발층을 거쳐가면, 2번 사용자의 출발층에 가야하고, 그렇지 않을 경우 1번 사용자의 도착층에 가야한다. 따라서 <strong>1</strong>** 번 사용자의 도착층과 **** 2 <strong><strong>번 사용자의 출발층 중 더 작은 층수</strong></strong></li><li><strong>1번, 2번 사용자 모두 아래로 갈 경우: 마찬가지로, 이 경우에는 <strong>1</strong></strong> 번 사용자의 도착층과 **** 2 <strong><strong>번 사용자의 출발층 중 더 큰 층수</strong> 를먼저 방문해야 한다.</strong></li><li><strong>1번, 2번 사용자가 서로 다른 방향으로 갈 경우: 현재 1번 사용자가 탑승해 있으므로, 먼저 1번 사용자를 도착층으로 데려가야 한다. 따라서 <strong>1</strong></strong> 번 사용자의 도착층**</li></ul></td></tr><tr><td>00</td><td>10</td><td>상황에 따라 판단 (Done 00, On_board 01의 상황과 유사) <ul><li>1번, 2번 사용자 모두 위로 갈 경우: 현재 2번 사용자만 탑승해 있으므로, 2번 사용자의 도착층과 1번 사용자의 출발층을 비교하여 2번 사용자의 도착층에 가는 사이에 1번 사용자의 출발층을 거쳐간다면 1번 사용자의 출발층을 목적지로 삼아야 하고, 그렇지 않을 경우 2번 사용자의 도착층에 도착해야 한다. 따라서, <strong>1</strong>** 번 사용자의 출발층과 **** 2 <strong><strong>번 사용자의 도착층 중 더 작은 층수</strong></strong></li><li><strong>1번, 2번 사용자 모두 아래로 갈 경우: 마찬가지로, 이 경우에는 <strong>1</strong></strong> 번 사용자의 출발층과 **** 2 <strong><strong>번 사용자의 도착층 중 더 높은 층수</strong> 를 먼저 방문해야 한다.</strong></li><li><strong>1번, 2번 사용자가 서로 다른 방향으로 갈 경우: 현재 2번 사용자가 탑승해 있으므로, 먼저 2번 사용자를 도착층으로 데려가야 한다. 따라서 <strong>2</strong></strong> 번 사용자의 도착층**</li></ul></td></tr><tr><td>00</td><td>11</td><td>상황에 따라 판단<ul><li>1번, 2번 사용자 모두 위로 갈 경우: <strong>1</strong>** 번 사용자의 도착층과 **** 2 **<strong>번 사용자의 도착층 중 더 작은 층수</strong></li><li>1번, 2번 사용자 모두 아래로 갈 경우: <strong>1 번 사용자의 도착층과 2번 사용자의 도착층 중 더 큰 층수</strong></li><li>1번, 2번 사용자가 서로 다른 방향으로 갈 경우: 서로 다른 방향으로 가는데 동시에 타고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다. </li></ul></td></tr><tr><td>11</td><td>01</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>11</td><td>10</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>11</td><td>11</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>10</td><td>10</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>10</td><td>11</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>01</td><td>01</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr><tr><td>01</td><td>11</td><td>탑승한 사용자가 모두 도착층에 도착하였는데 엘레베이터에 탑승하고 있을 경우는 존재할 수 없다. 따라서 이전의 출력을 유지한다.</td></tr></tbody></table></div>
+<p><img src="./attachments/Pasted-image-20240126235350.png" width="auto" height="auto"/></p>
+<p>이를 작성한 코드는 위와 같다.</p>
+<h2 id="타겟층-이동단">타겟층 이동단<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#타겟층-이동단" class="internal alias"> §</a></h2>
+<p>타겟층이 선택되었을 때, 엘레베이터의 현재 층수와 비교하여 해당 타겟층으로 이동하는 역할을 한다. 해당 부분은 target_controller 모듈로 따로 선언하였다. 해당 모듈은 타겟층과 현재 엘레베이터의 상태를 비교해서 엘리베이터에 올라가는 명령을 내릴지, 내려가는 명령을 내릴지, 문을 열지 닫을지에 대한 정보를 Elevator 모듈에 전달하는 중간 모듈이다. 엘레베이터가 각 동작을 수행할 때에 1초씩 걸림을 고려하여 지연을 주었다.</p>
+<h1 id="elevator-모듈">Elevator 모듈<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#elevator-모듈" class="internal alias"> §</a></h1>
+<p>Elevator 모듈의 경우 총 10가지 State로 나눈 State Machine을 구상하여 제작하였다. 회로의 안정성을 위해서 그레이 코드를 이용하여 상태들을 나타내었으며, 각각의 상태들에 대한 상태머신은 다음과 같다.</p>
+<p><img src="./attachments/Pasted-image-20240126235358.png" width="auto" height="auto"/></p>
+<p>상태에 대한 Notation은 1Fc는 floor1_closed, 2Fc는 floor2_closed, 3Fo는 floor3_closed 등등과 같으며, 3가지 input (혹은 DU를 하나의 버스로 생각한다면 2가지 input, 실제 코드에서는 이와 같이 구현되어 있다.) 은 각각 O, D, U로, 각각 Open, Down, Up을 의미한다. 즉, D’U의 경우 내려가는 것에 대한 입력, DU’의 경우 올라가는 것에 대한 입력, DU 혹은 D’U’은 IDLE상태로 있는 것에 대한 입력이며, 올라가거나 내려갈때는 항상 문이 닫힌 상태로, IDLE 상태일때는 문이 열리고 닫힌 상태 모두 가능하다.</p>
+<p>각각의 층에서 문이 닫혀있는 상태일 때, 올라가는 입력 (O’D’U)이 들어오면 위층의 닫힌 상태로 상태를 바꾸었으며, 반대로 내려가는 입력 (O’DU’)이 입력된다면 아랫층의 닫힌 상태로 상태를 바꾸었다. 또, 문이 열리는 입력 (O)이 입력된다면 해당 층에서 문이 열린 상태로 상태를 바꾸었으며, 문이 열린 상태에서 문을 닫는 입력 (O’)을 입력하였을 때에는 해당 층의 문이 닫힌 상태로 상태를 바꾸도록 하였다. 1층에서 닫힌 상태로 있을 경우, 만약 O’DU’ (내려가는 입력)과 같이 불가능한 입력이 들어온다면 해당 입력을 수행하지 않고 같은 상태로 유지하도록 하였으며, 이는 5층에서 O’D’U (올라가는 입력)에서도 마찬가지로 적용하였다.</p>
+<p>위의 상태머신에서 그레이 코드화 시켜 예기치 못한 오류를 최소화하도록 각각의 상태들을 할당하였다. 즉, 각각의 상태에 대한 코드는 다음과 같다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>floor1_closed</th><th>0001</th><th>floor1_open</th><th>1001</th></tr></thead><tbody><tr><td>floor2_closed</td><td>0011</td><td>floor2_open</td><td>1011</td></tr><tr><td>floor3_closed</td><td>0010</td><td>floor3_open</td><td>1010</td></tr><tr><td>floor4_closed</td><td>0110</td><td>floor4_open</td><td>1110</td></tr><tr><td>floor5_closed</td><td>0111</td><td>floor5_open</td><td>1111</td></tr></tbody></table></div>
+<p>즉, MSB는 문이 열려있는지 닫혀있는지에 대한 상태이며, 나머지 3비트는 각각의 층에 대한 그레이 코드이다. 위의 상태머신 다이어그램을 참조하면 두가지 이상의 비트가 동시에 바뀌는 경우는 없음을 확인할 수 있다.</p>
+<p>최종적으로는, 각 상태를 문이 열렸는지 혹은 몇층인지로 변환해주는 부분이 필요하여, 그레이 코드를 부호가 없는 binary로 xor 연산을 이용하여 변환해 주었으며, 문의 열림/닫힘 상태는 MSB 비트를 출력하여 각각의 상태에 대해서 변환한 값을 출력해주었다.</p>
+<p>실제 코드상에서 이를 구현할 때에는 문이 열리고 닫힐 때 1초, 엘레베이터가 층을 이동할 때 1초의 delay가 있으므로 클락을 이용하여 다른 상태로 전환될 때 delay를 주어 이를 가상으로 구현하였다.</p>
+<h1 id="테스트벤치">테스트벤치<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#테스트벤치" class="internal alias"> §</a></h1>
+<p>엘레베이터는 초기상태로 1층에서 문을 닫은 상태로 정지하고 있다고 가정하였다. 이는 엘레베이터 모듈에 정의되어 있다.</p>
+<h2 id="예제-1">예제 1<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#예제-1" class="internal alias"> §</a></h2>
+<p>해당 테스트벤치는 다음과 같은 입력을 가진다.</p>
+<ul>
+<li>초기상태 5초딜레이</li>
+<li>4층<span>→</span>2층 5초 딜레이</li>
+<li>5층<span>→</span>3층 14초 딜레이 (엘레베이터가 이전 작업들을 마저 수행하기 위해서 기다리는 delay로, 이전 수행중인 작업을 완료하기 위해서는 최소 11초의 딜레이가 필요하다. )</li>
+<li>4층<span>→</span>3층</li>
+<li>끝날때까지 충분히 딜레이</li>
+</ul>
+<p><img src="./attachments/Pasted-image-20240126235411.png" width="auto" height="auto"/></p>
+<p>의도하였던 대로, 1층에 있는 엘레베이터가 4층의 사용자를 데려가기 위해 4층으로 이동중에 5층에서 내려가는 입력이 들어와 5층을 우선적으로 방문하여 두명의 사용자를 같이 내려갈 수 있도록 target_floor_input이 바뀌었고, 이에 따라 엘레베이터도 5층을 우선적으로 방문하여 문을 열어 2번 사용자를 태운다. 그리고 순차적으로 4층에 방문하여 1번 사용자도 태운 뒤, 2번 사용자와 1번 사용자 각자의 목적지인 3층과 2층을 순차적으로 방문하여 사용자가 하차할 수 있음을 확인하였다. 또, 1번 사용자의 목적지에 도달한 이후에도 새로운 사용자의 input을 수행하기 위해서 4층으로 target_floor_input이 세팅되어 엘레베이터가 이동하였음을 확인하였다. 그리고 마지막 사용자까지 최종 도착층인 2층에 내려주고 idle 상태로 기다림을 확인할 수 있다.</p>
+<h2 id="예제-2">예제 2<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#예제-2" class="internal alias"> §</a></h2>
+<p>해당 테스트벤치는 다음과 같은 입력을 가진다.</p>
+<ul>
+<li>2층<span>→</span>5층 5초 딜레이</li>
+<li>3층<span>→</span>4층 5초 딜레이</li>
+<li>5초 딜레이 (엘레베이터가 이전 작업들을 마저 수행하기 위해서 기다리는 delay로, 이전 수행중인 작업을 완료하기 위해서는 최소 4초의 딜레이가 필요하다. )</li>
+<li>4층<span>→</span>3층</li>
+<li>끝날때까지 충분히 딜레이</li>
+</ul>
+<p><img src="./attachments/Pasted-image-20240126235419.png" width="auto" height="auto"/></p>
+<p>의도하였던 대로, 1층에서 4층에 있는 첫번째 사용자를 태우기 위해 올라가던 중에 5층에 있는 두번째 사용자가 입력하였기 때문에, 효율을 위해서 5층을 먼저 방문하여 두번째 사용자를 태운 뒤, 4층을 방문하여 첫번째 사용자를 태우고, 목표한 3층과 2층으로 순차적으로 방문한다.</p>
+
+
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script>
+<script>
+const setRepoTheme = (theme) => {
+	const elems = document.querySelectorAll('.repo-card')
+	for (const elem of elems) {
+		if (theme === 'dark')
+			elem.setAttribute('data-theme', 'dark-theme')
+		else
+			elem.setAttribute('data-theme', 'light-default')
+	}
+	window.tarptaeya.reloadRepoCards()
+}
+setRepoTheme(document.documentElement.getAttribute('saved-theme'))
+document.querySelector('#darkmode-toggle').addEventListener('change', (e) => setRepoTheme(e.target.checked ? 'dark' : 'light'))
+</script></article></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content"><ul class="overflow"><li class="depth-0"><a href="#specifications" data-for="specifications">Specifications</a></li><li class="depth-0"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-0"><a href="#controller-모듈" data-for="controller-모듈">Controller 모듈</a></li><li class="depth-1"><a href="#controller-모듈-state-정의" data-for="controller-모듈-state-정의">Controller 모듈 State 정의</a></li><li class="depth-1"><a href="#입력단" data-for="입력단">입력단</a></li><li class="depth-1"><a href="#타겟층-선택단-output-logic" data-for="타겟층-선택단-output-logic">타겟층 선택단 (output logic)</a></li><li class="depth-1"><a href="#타겟층-이동단" data-for="타겟층-이동단">타겟층 이동단</a></li><li class="depth-0"><a href="#elevator-모듈" data-for="elevator-모듈">Elevator 모듈</a></li><li class="depth-0"><a href="#테스트벤치" data-for="테스트벤치">테스트벤치</a></li><li class="depth-1"><a href="#예제-1" data-for="예제-1">예제 1</a></li><li class="depth-1"><a href="#예제-2" data-for="예제-2">예제 2</a></li></ul></div></div><div class="graph desktop-only"><h3>Graph View</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[]}"></div><svg version="1.1" id="global-graph-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+	s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+	c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+	C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+	c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+	v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+	s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+	C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+	S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+	s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+	s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[]}"></div></div></div><div class="backlinks desktop-only"><h3>Backlinks</h3><ul class="overflow"><li>No backlinks found</li></ul></div><div class="explorer mobile-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;Flutter&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-APIs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-Labs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Linux-Commands&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cookie&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)/ARM&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/OS-Assignments&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/WePlan&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;삽질&quot;,&quot;collapsed&quot;:true}]"><h1>Explorer</h1><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Flutter"><a href="../Flutter" data-for="Flutter" class="folder-title">Flutter</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Flutter"><li><a href="../Flutter/Architecture" data-for="Flutter/Architecture">Architecture</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux"><a href="../Linux" data-for="Linux" class="folder-title">Linux</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-APIs"><a href="../Linux/Kernel-APIs" data-for="Kernel-APIs" class="folder-title">Kernel APIs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-APIs"><li><a href="../Linux/Kernel-APIs/kernel-↔-user" data-for="Linux/Kernel-APIs/kernel-↔-user">kernel ↔ user</a></li><li><a href="../Linux/Kernel-APIs/mknod" data-for="Linux/Kernel-APIs/mknod">mknod</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-Labs"><a href="../Linux/Kernel-Labs" data-for="Kernel-Labs" class="folder-title">Kernel Labs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-Labs"><li><a href="../Linux/Kernel-Labs/00_Introduction" data-for="Linux/Kernel-Labs/00_Introduction">Introduction</a></li><li><a href="../Linux/Kernel-Labs/03_Character-Device-Drivers" data-for="Linux/Kernel-Labs/03_Character-Device-Drivers">Character Device Drivers</a></li><li><a href="../Linux/Kernel-Labs/04_IO-access-and-Interrupts" data-for="Linux/Kernel-Labs/04_IO-access-and-Interrupts">I/O access and Interrupts</a></li><li><a href="../Linux/Kernel-Labs/05_Deferred-Work" data-for="Linux/Kernel-Labs/05_Deferred-Work">Deferred Work</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Linux-Commands"><a href="../Linux/Linux-Commands" data-for="Linux-Commands" class="folder-title">Linux Commands</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Linux-Commands"><li><a href="../Linux/Linux-Commands/Linux-BIOS" data-for="Linux/Linux-Commands/Linux-BIOS">Linux BIOS</a></li><li><a href="../Linux/Linux-Commands/rsync" data-for="Linux/Linux-Commands/rsync">rsync</a></li><li><a href="../Linux/Linux-Commands/Upgrade-Debian" data-for="Linux/Linux-Commands/Upgrade-Debian">Upgrade Debian</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects"><a href="../Projects" data-for="Projects" class="folder-title">Projects</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cookie"><a href="../Projects/Cookie" data-for="Cookie" class="folder-title">Cookie</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cookie"><li><a href="../Projects/Cookie/0314_아이디어발표" data-for="Projects/Cookie/0314_아이디어발표">3/14 아이디어 발표</a></li><li><a href="../Projects/Cookie/0328_발표" data-for="Projects/Cookie/0328_발표">3/28 5주차 발표</a></li><li><a href="../Projects/Cookie/0411_발표" data-for="Projects/Cookie/0411_발표">4/11 7주차 발표</a></li><li><a href="../Projects/Cookie/0425_발표" data-for="Projects/Cookie/0425_발표">4/25 9주차 발표</a></li><li><a href="../Projects/Cookie/0509_발표" data-for="Projects/Cookie/0509_발표">5/9 13주차 발표</a></li><li><a href="../Projects/Cookie/0523_발표" data-for="Projects/Cookie/0523_발표">5/23 15주차 발표</a></li><li><a href="../Projects/Cookie/0613_발표" data-for="Projects/Cookie/0613_발표">6/13 18주차 발표</a></li><li><a href="../Projects/Cookie/0620_최종발표" data-for="Projects/Cookie/0620_최종발표">6/20 1학기 최종발표</a></li><li><a href="../Projects/Cookie/0911_소개발표" data-for="Projects/Cookie/0911_소개발표">9/11 2학기 소개발표</a></li><li><a href="../Projects/Cookie/0925_발표" data-for="Projects/Cookie/0925_발표">9/25 4주차 발표</a></li><li><a href="../Projects/Cookie/1023_발표" data-for="Projects/Cookie/1023_발표">10/23 8주차 발표</a></li><li><a href="../Projects/Cookie/1106_발표" data-for="Projects/Cookie/1106_발표">11/6 10주차 발표</a></li><li><a href="../Projects/Cookie/1120_발표" data-for="Projects/Cookie/1120_발표">11/20 12주차 발표</a></li><li><a href="../Projects/Cookie/1211_발표" data-for="Projects/Cookie/1211_발표">12/11 14주차 발표</a></li><li><a href="../Projects/Cookie/1218_최종발표" data-for="Projects/Cookie/1218_최종발표">12/18 2학기 최종발표</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)"><a href="../Projects/Cosmos-(ongoing)" data-for="Cosmos-(ongoing)" class="folder-title">Cosmos (ongoing)</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)/ARM"><a href="../Projects/Cosmos-(ongoing)/ARM" data-for="ARM" class="folder-title">ARM</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)/ARM"><li><a href="../Projects/Cosmos-(ongoing)/ARM/Interrupt" data-for="Projects/Cosmos-(ongoing)/ARM/Interrupt">Interrupt</a></li><li><a href="../Projects/Cosmos-(ongoing)/ARM/Processor-Modes" data-for="Projects/Cosmos-(ongoing)/ARM/Processor-Modes">Processor Modes</a></li></ul></div></li><li><a href="../Projects/Cosmos-(ongoing)/01_Intro" data-for="Projects/Cosmos-(ongoing)/01_Intro">Intro</a></li><li><a href="../Projects/Cosmos-(ongoing)/02_Booting-(UEFI)" data-for="Projects/Cosmos-(ongoing)/02_Booting-(UEFI)">Booting (UEFI)</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/OS-Assignments"><a href="../Projects/OS-Assignments" data-for="OS-Assignments" class="folder-title">OS Assignments</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/OS-Assignments"><li><a href="../Projects/OS-Assignments/pa0" data-for="Projects/OS-Assignments/pa0">PA0: Warming up C programming</a></li><li><a href="../Projects/OS-Assignments/pa1" data-for="Projects/OS-Assignments/pa1">PA1: My Amazing Shell</a></li><li><a href="../Projects/OS-Assignments/pa2" data-for="Projects/OS-Assignments/pa2">PA2: Simulating Process Schedulers</a></li><li><a href="../Projects/OS-Assignments/pa3" data-for="Projects/OS-Assignments/pa3">PA3: Virtual Memory Simulator</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/WePlan"><a href="../Projects/WePlan" data-for="WePlan" class="folder-title">WePlan - 공동공간 예약 서비스</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/WePlan"><li><a href="../Projects/WePlan/01_Project-Proposal" data-for="Projects/WePlan/01_Project-Proposal">Project Proposal</a></li><li><a href="../Projects/WePlan/02_Requirements-Specification" data-for="Projects/WePlan/02_Requirements-Specification">Requirements Specification</a></li><li><a href="../Projects/WePlan/03_Design-Document" data-for="Projects/WePlan/03_Design-Document">Design Document</a></li><li><a href="../Projects/WePlan/04_Final-Project-Report" data-for="Projects/WePlan/04_Final-Project-Report">Final Project Report</a></li></ul></div></li><li><a href="../Projects/Doge_Driver" data-for="Projects/Doge_Driver">Doge Driver</a></li><li><a href="../Projects/Elevator-Controller" data-for="Projects/Elevator-Controller">엘레베이터 컨트롤러</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="삽질"><a href="../삽질" data-for="삽질" class="folder-title">🚧 삽질기</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="삽질"><li><a href="../삽질/2024-02-네트워크-삽질기" data-for="삽질/2024-02-네트워크-삽질기">2024-02 네트워크 삽질기</a></li><li><a href="../삽질/OpenCV-on-mac" data-for="삽질/OpenCV-on-mac">[OpenCV] Xcode OpenCV 설치 및 세팅</a></li><li><a href="../삽질/Rosetta+Conda-Env-Setting" data-for="삽질/Rosetta+Conda-Env-Setting">[Conda] Rosetta + Conda Env 세팅</a></li><li><a href="../삽질/Rosetta+Conda-ROS-Setting" data-for="삽질/Rosetta+Conda-ROS-Setting">[ROS] Rosetta + Conda로 ROS 세팅</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div></div><footer class><hr/><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.1.5</a>, © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script type="application/javascript">// quartz/components/scripts/quartz/components/scripts/callout.inline.ts
+function toggleCallout() {
+  const outerBlock = this.parentElement;
+  outerBlock.classList.toggle(`is-collapsed`);
+  const collapsed = outerBlock.classList.contains(`is-collapsed`);
+  const height = collapsed ? this.scrollHeight : outerBlock.scrollHeight;
+  outerBlock.style.maxHeight = height + `px`;
+  let current = outerBlock;
+  let parent = outerBlock.parentElement;
+  while (parent) {
+    if (!parent.classList.contains(`callout`)) {
+      return;
+    }
+    const collapsed2 = parent.classList.contains(`is-collapsed`);
+    const height2 = collapsed2 ? parent.scrollHeight : parent.scrollHeight + current.scrollHeight;
+    parent.style.maxHeight = height2 + `px`;
+    current = parent;
+    parent = parent.parentElement;
+  }
+}
+function setupCallout() {
+  const collapsible = document.getElementsByClassName(
+    `callout is-collapsible`
+  );
+  for (const div of collapsible) {
+    const title = div.firstElementChild;
+    if (title) {
+      title.removeEventListener(`click`, toggleCallout);
+      title.addEventListener(`click`, toggleCallout);
+      const collapsed = div.classList.contains(`is-collapsed`);
+      const height = collapsed ? title.scrollHeight : div.scrollHeight;
+      div.style.maxHeight = height + `px`;
+    }
+  }
+}
+document.addEventListener(`nav`, setupCallout);
+window.addEventListener(`resize`, setupCallout);
+</script><script type="module">
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+          const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+          mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: 'loose',
+            theme: darkMode ? 'dark' : 'default'
+          });
+          document.addEventListener('nav', async () => {
+            await mermaid.run({
+              querySelector: '.mermaid'
+            })
+          });
+          </script><script src="../postscript.js" type="module"></script></html>

@@ -6,59 +6,65 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>WePlan</title>
-    <link>https://tech.parkjb.com/Projects/WePlan</link>
-    <guid>https://tech.parkjb.com/Projects/WePlan</guid>
+    <title>[OpenCV] Xcode OpenCV 설치 및 세팅</title>
+    <link>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</link>
+    <guid>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</guid>
+    <description> M1맥 기준으로 작성되었습니다. homebrew 경로는 본인 맥에 맞게 바꿔서 넣기를 OpenCV 설치 § brew install opencv Dependency들 많아서 조금 걸림 OpenCV Library &amp; Header 추가 § Header &amp; Library 추가 § Targets - Build Settings에서 다음과 같이 설정 Setting경로Library Search Path/opt/homebrew/Cellar/opencv/버전명/libHeader Search Path/opt/homebrew/Cellar/opencv/버전명/include/opencv4 Disable Library Validation § Disable Library Validation 항목 체크해줄것 이거 안하면 라이브러리 못불러온다고 에러남 카메라 쓰면 그 밑에 Resource Access에서 Camera도 켜줄것!! Info.</description>
+    <pubDate>Tue, 05 Mar 2024 15:05:16 GMT</pubDate>
+  </item><item>
+    <title>Flutter</title>
+    <link>https://tech.parkjb.com/Flutter/</link>
+    <guid>https://tech.parkjb.com/Flutter/</guid>
     <description></description>
-    <pubDate>Thu, 25 Jan 2024 16:13:03 GMT</pubDate>
+    <pubDate>Tue, 05 Mar 2024 14:32:31 GMT</pubDate>
   </item><item>
-    <title>02_VGA</title>
-    <link>https://tech.parkjb.com/Projects/cosmOS/02_VGA</link>
-    <guid>https://tech.parkjb.com/Projects/cosmOS/02_VGA</guid>
-    <description>VGA Text Mode § VGA Text Buffer § VGA Text Buffer: 25 rows X 80 cols Each array entry with following format | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | | ---------------- | --- | --- | --- | --- | --- | --- | --- | ---------------- | --- | --- | --- | ---------------- | --- | --- | ----- | | ASCII code point | &lt; | &lt; | &lt; | &lt; | &lt; | &lt; | &lt; | Foreground Color | &lt; | &lt; | &lt; | Background Color | &lt; | &lt; | Blink | First Byte: ASCII (exactly, cp437) VGA text buffer is accessible via memory-mapped I/O to the address 0xb8000 Directly access the Text Buffer on the VGA hardware (without accessing RAM) We can Read/Write through normal memory operations to that address A Rust Module § Colors § // in src/vga_buffer.</description>
-    <pubDate>Thu, 25 Jan 2024 08:11:30 GMT</pubDate>
-  </item><item>
-    <title>cosmOS - Rust based OS</title>
-    <link>https://tech.parkjb.com/Projects/cosmOS/Introduction</link>
-    <guid>https://tech.parkjb.com/Projects/cosmOS/Introduction</guid>
-    <description>Project cosmOS is a project to create a new operating system for the x86 architecture. The project is currently in the planning phase. This project is based on the Writing an OS in Rust tutorial.</description>
-    <pubDate>Thu, 25 Jan 2024 08:06:02 GMT</pubDate>
-  </item><item>
-    <title>GetX vs BLoC vs Provider</title>
-    <link>https://tech.parkjb.com/Flutter/GetX-vs-BLoC-vs-Provider</link>
-    <guid>https://tech.parkjb.com/Flutter/GetX-vs-BLoC-vs-Provider</guid>
-    <description>Reference § Flutter 인기 아키텍처 라이브러리 3종 비교 분석 - GetX vs BLoC vs Provider.</description>
-    <pubDate>Thu, 25 Jan 2024 08:03:11 GMT</pubDate>
-  </item><item>
-    <title>Character Device Drivers</title>
-    <link>https://tech.parkjb.com/Linux-Kernel-Labs/Character-Device-Drivers</link>
-    <guid>https://tech.parkjb.com/Linux-Kernel-Labs/Character-Device-Drivers</guid>
-    <description>Overview § UNIX 시스템에서는 모든 장치들을 파일로 취급한다. /dev 디렉토리에는 시스템에 연결된 모든 장치들이 파일 형태로 존재하고, open, write, close, lseek, mmap 등의 시스템 콜을 통해 운영체제에서 device driver로 접근할 수 있다.</description>
-    <pubDate>Thu, 25 Jan 2024 07:58:30 GMT</pubDate>
-  </item><item>
-    <title>Kernel API</title>
-    <link>https://tech.parkjb.com/Linux-Kernel-Labs/Kernel-API</link>
-    <guid>https://tech.parkjb.com/Linux-Kernel-Labs/Kernel-API</guid>
-    <description>Kernel API § Memory Allocation: kmalloc &amp; kfree § #include &lt;linux/slab.h&gt; string = kmalloc(string_len + 1, GFP_KERNEL); kmalloc § void * kmalloc (size_t size, gfp_t flags); size_t size: how many bytes of memory are required.</description>
-    <pubDate>Thu, 25 Jan 2024 07:58:06 GMT</pubDate>
-  </item><item>
-    <title>mknod</title>
-    <link>https://tech.parkjb.com/Linux/mknod</link>
-    <guid>https://tech.parkjb.com/Linux/mknod</guid>
-    <description>Usage § mknod NAME TYPE [MAJOR MINOR] TYPE: b, c, p, u MAJOR: major number MINOR: minor number Create a character device § mknod /dev/zero c 1 5.</description>
-    <pubDate>Thu, 25 Jan 2024 07:57:03 GMT</pubDate>
-  </item><item>
-    <title>Cookie</title>
-    <link>https://tech.parkjb.com/Projects/Cookie</link>
-    <guid>https://tech.parkjb.com/Projects/Cookie</guid>
+    <title>Linux</title>
+    <link>https://tech.parkjb.com/Linux/</link>
+    <guid>https://tech.parkjb.com/Linux/</guid>
     <description></description>
-    <pubDate>Thu, 25 Jan 2024 07:55:40 GMT</pubDate>
+    <pubDate>Tue, 05 Mar 2024 14:32:25 GMT</pubDate>
   </item><item>
-    <title>Welcome!</title>
-    <link>https://tech.parkjb.com/</link>
-    <guid>https://tech.parkjb.com/</guid>
-    <description> Programming Languages § Frameworks, Platforms and Libraries § Severs &amp; Databases § Environments &amp; Tools § 학력 § 2015.03 ~ 2018.02 단국대학교 사범대학 부속고등학교 졸업 2018.</description>
-    <pubDate>Thu, 25 Jan 2024 07:07:29 GMT</pubDate>
+    <title>Interrupt</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Interrupt</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Interrupt</guid>
+    <description>https://www.geeksforgeeks.org/arm-interrupt-structure/.</description>
+    <pubDate>Tue, 05 Mar 2024 07:52:18 GMT</pubDate>
+  </item><item>
+    <title>Processor Modes</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Processor-Modes</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Processor-Modes</guid>
+    <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
+    <pubDate>Tue, 05 Mar 2024 07:47:09 GMT</pubDate>
+  </item><item>
+    <title>Booting (UEFI)</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</guid>
+    <description>The Boot Process § Executes Motherboard ROM firmware code power-on-self-test(https://en.wikipedia.org/wiki/Power-on_self-test) detect available RAM pre-initialize CPU &amp; other hardwares looks for bootable disk QEMU § QEMU-ARM64 UEFI HOWTO: https://cdn.</description>
+    <pubDate>Wed, 21 Feb 2024 09:31:15 GMT</pubDate>
+  </item><item>
+    <title>Intro</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/01_Intro</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/01_Intro</guid>
+    <description>Steps § Create Project § cargo new cosmos Disable Standard Library § // src/main.rs #![no_std] Implement Panic Handler § // src/main.rs #[panic_handler] fn handle_panic(_info: &amp;PanicInfo) -&gt; ! { loop{} } Disable stack unwinding § # Cargo.</description>
+    <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Introduction</title>
+    <link>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</link>
+    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</guid>
+    <description></description>
+    <pubDate>Mon, 19 Feb 2024 09:06:24 GMT</pubDate>
+  </item><item>
+    <title>Deferred Work</title>
+    <link>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</link>
+    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</guid>
+    <description>Objectives § Understanding deferred work Implementation of common tasks that uses deferred work Understanding the peculiarities of synchronization for deferred work Background information § Deferred Work § Definition: A class of kernel facilities that allows one to schedule code to be executed at a later timer Can run either in process context or in interruption context depending on the type of the deferred work.</description>
+    <pubDate>Mon, 19 Feb 2024 08:59:51 GMT</pubDate>
+  </item><item>
+    <title>rsync</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/rsync</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/rsync</guid>
+    <description>rsync &lt;options&gt; &lt;source&gt; &lt;destination&gt; .</description>
+    <pubDate>Sat, 10 Feb 2024 02:14:03 GMT</pubDate>
   </item>
     </channel>
   </rss>
