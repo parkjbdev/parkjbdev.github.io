@@ -6,6 +6,12 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2주차 연구노트</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/2%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/2%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</guid>
+    <description></description>
+    <pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate>
+  </item><item>
     <title>[OpenCV] Xcode OpenCV 설치 및 세팅</title>
     <link>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</link>
     <guid>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</guid>
@@ -36,6 +42,12 @@
     <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
     <pubDate>Tue, 05 Mar 2024 07:47:09 GMT</pubDate>
   </item><item>
+    <title>1주차 연구노트</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/1%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/1%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</guid>
+    <description></description>
+    <pubDate>Sun, 03 Mar 2024 00:00:00 GMT</pubDate>
+  </item><item>
     <title>Booting (UEFI)</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</guid>
@@ -53,18 +65,6 @@
     <guid>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</guid>
     <description></description>
     <pubDate>Mon, 19 Feb 2024 09:06:24 GMT</pubDate>
-  </item><item>
-    <title>Deferred Work</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</guid>
-    <description>Objectives § Understanding deferred work Implementation of common tasks that uses deferred work Understanding the peculiarities of synchronization for deferred work Background information § Deferred Work § Definition: A class of kernel facilities that allows one to schedule code to be executed at a later timer Can run either in process context or in interruption context depending on the type of the deferred work.</description>
-    <pubDate>Mon, 19 Feb 2024 08:59:51 GMT</pubDate>
-  </item><item>
-    <title>rsync</title>
-    <link>https://tech.parkjb.com/Linux/Linux-Commands/rsync</link>
-    <guid>https://tech.parkjb.com/Linux/Linux-Commands/rsync</guid>
-    <description>rsync &lt;options&gt; &lt;source&gt; &lt;destination&gt; .</description>
-    <pubDate>Sat, 10 Feb 2024 02:14:03 GMT</pubDate>
   </item>
     </channel>
   </rss>
