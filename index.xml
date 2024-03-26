@@ -6,16 +6,34 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>2주차 연구노트</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/2%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/2%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</guid>
-    <description></description>
-    <pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate>
+    <title>SPSel</title>
+    <link>https://tech.parkjb.com/ARM/Registers/SPSel</link>
+    <guid>https://tech.parkjb.com/ARM/Registers/SPSel</guid>
+    <description>https://developer.arm.com/documentation/ddi0595/2021-12/AArch64-Registers/SPSel—Stack-Pointer-Select.</description>
+    <pubDate>Tue, 26 Mar 2024 09:15:15 GMT</pubDate>
+  </item><item>
+    <title>MSR</title>
+    <link>https://tech.parkjb.com/ARM/Instructions/MSR</link>
+    <guid>https://tech.parkjb.com/ARM/Instructions/MSR</guid>
+    <description>https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference/Miscellaneous-ARM-instructions/MSR.</description>
+    <pubDate>Tue, 26 Mar 2024 09:14:43 GMT</pubDate>
+  </item><item>
+    <title>DAIF</title>
+    <link>https://tech.parkjb.com/ARM/Registers/DAIF</link>
+    <guid>https://tech.parkjb.com/ARM/Registers/DAIF</guid>
+    <description>DAIF: Interrupt Mask Bits § Allows access to the interrupt mask bits. https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits?lang=en D bit[9] § Debug Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D Defaults to 1 on warm reset DMeaning0not masked1masked A bit[8] § SError(SystemError) Exception mask bit Defaults to 1 on warm reset AMeaning0Exception not masked1Exception masked I bit[7] § IRQ mask bit Defaults to 1 on warm reset IMeaning0Exception not masked1Exception masked F bit[6] § FIQ mask bit Defaults to 1 on warm reset FMeaning0Exception not masked1Exception masked.</description>
+    <pubDate>Tue, 26 Mar 2024 09:08:45 GMT</pubDate>
+  </item><item>
+    <title>Interrupt Handling</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/03_Interrupt-Handling</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/03_Interrupt-Handling</guid>
+    <description>ARM Interrupt Structure § Interrupt DAIF Register § enable interrupt: asm!(&quot;msr DAIFClr, #0xf&quot;, options(nomem, nostack)); disable interrupt: asm!(&quot;msr DAIFClr, #0xf&quot;, options(nomem, nostack)); DAIF Registers used to configure Coretex-M Exceptions § https://interrupt.</description>
+    <pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate>
   </item><item>
     <title>[OpenCV] Xcode OpenCV 설치 및 세팅</title>
     <link>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</link>
     <guid>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</guid>
-    <description> M1맥 기준으로 작성되었습니다. homebrew 경로는 본인 맥에 맞게 바꿔서 넣기를 OpenCV 설치 § brew install opencv Dependency들 많아서 조금 걸림 OpenCV Library &amp; Header 추가 § Header &amp; Library 추가 § Targets - Build Settings에서 다음과 같이 설정 Setting경로Library Search Path/opt/homebrew/Cellar/opencv/버전명/libHeader Search Path/opt/homebrew/Cellar/opencv/버전명/include/opencv4 Disable Library Validation § Disable Library Validation 항목 체크해줄것 이거 안하면 라이브러리 못불러온다고 에러남 카메라 쓰면 그 밑에 Resource Access에서 Camera도 켜줄것!! Info.</description>
+    <description>OpenCV 설치 § brew install opencv Dependency들 많아서 조금 걸림 OpenCV Library &amp; Header 추가 § Header &amp; Library 추가 § Targets - Build Settings에서 다음과 같이 설정 Setting경로Library Search Path/opt/homebrew/Cellar/opencv/버전명/libHeader Search Path/opt/homebrew/Cellar/opencv/버전명/include/opencv4 Disable Library Validation § Disable Library Validation 항목 체크해줄것 이거 안하면 라이브러리 못불러온다고 에러남 카메라 쓰면 그 밑에 Resource Access에서 Camera도 켜줄것!! Info.</description>
     <pubDate>Tue, 05 Mar 2024 15:05:16 GMT</pubDate>
   </item><item>
     <title>Flutter</title>
@@ -31,40 +49,22 @@
     <pubDate>Tue, 05 Mar 2024 14:32:25 GMT</pubDate>
   </item><item>
     <title>Interrupt</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Interrupt</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Interrupt</guid>
+    <link>https://tech.parkjb.com/ARM/Interrupt</link>
+    <guid>https://tech.parkjb.com/ARM/Interrupt</guid>
     <description>https://www.geeksforgeeks.org/arm-interrupt-structure/.</description>
     <pubDate>Tue, 05 Mar 2024 07:52:18 GMT</pubDate>
   </item><item>
     <title>Processor Modes</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Processor-Modes</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/ARM/Processor-Modes</guid>
+    <link>https://tech.parkjb.com/ARM/Processor-Modes</link>
+    <guid>https://tech.parkjb.com/ARM/Processor-Modes</guid>
     <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
     <pubDate>Tue, 05 Mar 2024 07:47:09 GMT</pubDate>
-  </item><item>
-    <title>1주차 연구노트</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/1%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%AE%E1%84%82%E1%85%A9%E1%84%90%E1%85%B3/1%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1</guid>
-    <description></description>
-    <pubDate>Sun, 03 Mar 2024 00:00:00 GMT</pubDate>
   </item><item>
     <title>Booting (UEFI)</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/02_Booting-(UEFI)</guid>
     <description>The Boot Process § Executes Motherboard ROM firmware code power-on-self-test(https://en.wikipedia.org/wiki/Power-on_self-test) detect available RAM pre-initialize CPU &amp; other hardwares looks for bootable disk QEMU § QEMU-ARM64 UEFI HOWTO: https://cdn.</description>
-    <pubDate>Wed, 21 Feb 2024 09:31:15 GMT</pubDate>
-  </item><item>
-    <title>Intro</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/01_Intro</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/01_Intro</guid>
-    <description>Steps § Create Project § cargo new cosmos Disable Standard Library § // src/main.rs #![no_std] Implement Panic Handler § // src/main.rs #[panic_handler] fn handle_panic(_info: &amp;PanicInfo) -&gt; ! { loop{} } Disable stack unwinding § # Cargo.</description>
-    <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Introduction</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</guid>
-    <description></description>
-    <pubDate>Mon, 19 Feb 2024 09:06:24 GMT</pubDate>
+    <pubDate>Sat, 02 Mar 2024 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>

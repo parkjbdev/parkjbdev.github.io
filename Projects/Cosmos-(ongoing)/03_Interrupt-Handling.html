@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html><head><title>Interrupt Handling</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="Interrupt Handling"/><meta property="og:description" content="ARM Interrupt Structure § Interrupt DAIF Register § enable interrupt: asm!(&amp;quot;msr DAIFClr, #0xf&amp;quot;, options(nomem, nostack)); disable interrupt: asm!(&amp;quot;msr DAIFClr, #0xf&amp;quot;, options(nomem, nostack)); DAIF Registers used to configure Coretex-M Exceptions § https://interrupt."/><meta property="og:image" content="https://tech.parkjb.com/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="ARM Interrupt Structure § Interrupt DAIF Register § enable interrupt: asm!(&amp;quot;msr DAIFClr, #0xf&amp;quot;, options(nomem, nostack)); disable interrupt: asm!(&amp;quot;msr DAIFClr, #0xf&amp;quot;, options(nomem, nostack)); DAIF Registers used to configure Coretex-M Exceptions § https://interrupt."/><meta name="generator" content="Quartz"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link href="../../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet" type="text/css" spa-preserve/><script src="../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="Projects/Cosmos-(ongoing)/03_Interrupt-Handling"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h1 class="page-title "><a href="../..">🪴 PARKJB TECH</a></h1><div class="spacer mobile-only"></div><div class="darkmode "><input class="toggle" id="darkmode-toggle" type="checkbox" tabindex="-1"/><label id="toggle-label-light" for="darkmode-toggle" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve"><title>Light mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg></label><label id="toggle-label-dark" for="darkmode-toggle" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve"><title>Dark mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></label></div><div class="search "><div id="search-icon"><p>Search</p><div></div><svg tabindex="0" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search</title><desc id="desc">Search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></div><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div id="results-container"></div></div></div></div><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;ARM&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;ARM/Instructions&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;ARM/Registers&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Flutter&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-APIs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-Labs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Linux-Commands&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cookie&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/OS-Assignments&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/WePlan&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;삽질&quot;,&quot;collapsed&quot;:true}]"><h1>Explorer</h1><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM"><a href="../../ARM" data-for="ARM" class="folder-title">ARM</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM/Instructions"><a href="../../ARM/Instructions" data-for="Instructions" class="folder-title">Instructions</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM/Instructions"><li><a href="../../ARM/Instructions/MSR" data-for="ARM/Instructions/MSR">MSR</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM/Registers"><a href="../../ARM/Registers" data-for="Registers" class="folder-title">Registers</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM/Registers"><li><a href="../../ARM/Registers/DAIF" data-for="ARM/Registers/DAIF">DAIF</a></li><li><a href="../../ARM/Registers/SPSel" data-for="ARM/Registers/SPSel">SPSel</a></li></ul></div></li><li><a href="../../ARM/Interrupt" data-for="ARM/Interrupt">Interrupt</a></li><li><a href="../../ARM/Processor-Modes" data-for="ARM/Processor-Modes">Processor Modes</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Flutter"><a href="../../Flutter" data-for="Flutter" class="folder-title">Flutter</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Flutter"><li><a href="../../Flutter/Architecture" data-for="Flutter/Architecture">Architecture</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux"><a href="../../Linux" data-for="Linux" class="folder-title">Linux</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-APIs"><a href="../../Linux/Kernel-APIs" data-for="Kernel-APIs" class="folder-title">Kernel APIs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-APIs"><li><a href="../../Linux/Kernel-APIs/kernel-↔-user" data-for="Linux/Kernel-APIs/kernel-↔-user">kernel ↔ user</a></li><li><a href="../../Linux/Kernel-APIs/mknod" data-for="Linux/Kernel-APIs/mknod">mknod</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-Labs"><a href="../../Linux/Kernel-Labs" data-for="Kernel-Labs" class="folder-title">Kernel Labs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-Labs"><li><a href="../../Linux/Kernel-Labs/00_Introduction" data-for="Linux/Kernel-Labs/00_Introduction">Introduction</a></li><li><a href="../../Linux/Kernel-Labs/03_Character-Device-Drivers" data-for="Linux/Kernel-Labs/03_Character-Device-Drivers">Character Device Drivers</a></li><li><a href="../../Linux/Kernel-Labs/04_IO-access-and-Interrupts" data-for="Linux/Kernel-Labs/04_IO-access-and-Interrupts">I/O access and Interrupts</a></li><li><a href="../../Linux/Kernel-Labs/05_Deferred-Work" data-for="Linux/Kernel-Labs/05_Deferred-Work">Deferred Work</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Linux-Commands"><a href="../../Linux/Linux-Commands" data-for="Linux-Commands" class="folder-title">Linux Commands</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Linux-Commands"><li><a href="../../Linux/Linux-Commands/Linux-BIOS" data-for="Linux/Linux-Commands/Linux-BIOS">Linux BIOS</a></li><li><a href="../../Linux/Linux-Commands/rsync" data-for="Linux/Linux-Commands/rsync">rsync</a></li><li><a href="../../Linux/Linux-Commands/Upgrade-Debian" data-for="Linux/Linux-Commands/Upgrade-Debian">Upgrade Debian</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects"><a href="../../Projects" data-for="Projects" class="folder-title">Projects</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cookie"><a href="../../Projects/Cookie" data-for="Cookie" class="folder-title">Cookie</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cookie"><li><a href="../../Projects/Cookie/0314_아이디어발표" data-for="Projects/Cookie/0314_아이디어발표">3/14 아이디어 발표</a></li><li><a href="../../Projects/Cookie/0328_발표" data-for="Projects/Cookie/0328_발표">3/28 5주차 발표</a></li><li><a href="../../Projects/Cookie/0411_발표" data-for="Projects/Cookie/0411_발표">4/11 7주차 발표</a></li><li><a href="../../Projects/Cookie/0425_발표" data-for="Projects/Cookie/0425_발표">4/25 9주차 발표</a></li><li><a href="../../Projects/Cookie/0509_발표" data-for="Projects/Cookie/0509_발표">5/9 13주차 발표</a></li><li><a href="../../Projects/Cookie/0523_발표" data-for="Projects/Cookie/0523_발표">5/23 15주차 발표</a></li><li><a href="../../Projects/Cookie/0613_발표" data-for="Projects/Cookie/0613_발표">6/13 18주차 발표</a></li><li><a href="../../Projects/Cookie/0620_최종발표" data-for="Projects/Cookie/0620_최종발표">6/20 1학기 최종발표</a></li><li><a href="../../Projects/Cookie/0911_소개발표" data-for="Projects/Cookie/0911_소개발표">9/11 2학기 소개발표</a></li><li><a href="../../Projects/Cookie/0925_발표" data-for="Projects/Cookie/0925_발표">9/25 4주차 발표</a></li><li><a href="../../Projects/Cookie/1023_발표" data-for="Projects/Cookie/1023_발표">10/23 8주차 발표</a></li><li><a href="../../Projects/Cookie/1106_발표" data-for="Projects/Cookie/1106_발표">11/6 10주차 발표</a></li><li><a href="../../Projects/Cookie/1120_발표" data-for="Projects/Cookie/1120_발표">11/20 12주차 발표</a></li><li><a href="../../Projects/Cookie/1211_발표" data-for="Projects/Cookie/1211_발표">12/11 14주차 발표</a></li><li><a href="../../Projects/Cookie/1218_최종발표" data-for="Projects/Cookie/1218_최종발표">12/18 2학기 최종발표</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)"><a href="../../Projects/Cosmos-(ongoing)" data-for="Cosmos-(ongoing)" class="folder-title">Cosmos (ongoing)</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)"><li><a href="../../Projects/Cosmos-(ongoing)/01_Intro" data-for="Projects/Cosmos-(ongoing)/01_Intro">Intro</a></li><li><a href="../../Projects/Cosmos-(ongoing)/02_Booting-(UEFI)" data-for="Projects/Cosmos-(ongoing)/02_Booting-(UEFI)">Booting (UEFI)</a></li><li><a href="../../Projects/Cosmos-(ongoing)/03_Interrupt-Handling" data-for="Projects/Cosmos-(ongoing)/03_Interrupt-Handling">Interrupt Handling</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/OS-Assignments"><a href="../../Projects/OS-Assignments" data-for="OS-Assignments" class="folder-title">OS Assignments</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/OS-Assignments"><li><a href="../../Projects/OS-Assignments/pa0" data-for="Projects/OS-Assignments/pa0">PA0: Warming up C programming</a></li><li><a href="../../Projects/OS-Assignments/pa1" data-for="Projects/OS-Assignments/pa1">PA1: My Amazing Shell</a></li><li><a href="../../Projects/OS-Assignments/pa2" data-for="Projects/OS-Assignments/pa2">PA2: Simulating Process Schedulers</a></li><li><a href="../../Projects/OS-Assignments/pa3" data-for="Projects/OS-Assignments/pa3">PA3: Virtual Memory Simulator</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/WePlan"><a href="../../Projects/WePlan" data-for="WePlan" class="folder-title">WePlan - 공동공간 예약 서비스</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/WePlan"><li><a href="../../Projects/WePlan/01_Project-Proposal" data-for="Projects/WePlan/01_Project-Proposal">Project Proposal</a></li><li><a href="../../Projects/WePlan/02_Requirements-Specification" data-for="Projects/WePlan/02_Requirements-Specification">Requirements Specification</a></li><li><a href="../../Projects/WePlan/03_Design-Document" data-for="Projects/WePlan/03_Design-Document">Design Document</a></li><li><a href="../../Projects/WePlan/04_Final-Project-Report" data-for="Projects/WePlan/04_Final-Project-Report">Final Project Report</a></li></ul></div></li><li><a href="../../Projects/Doge_Driver" data-for="Projects/Doge_Driver">Doge Driver</a></li><li><a href="../../Projects/Elevator-Controller" data-for="Projects/Elevator-Controller">엘레베이터 컨트롤러</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="삽질"><a href="../../삽질" data-for="삽질" class="folder-title">🚧 삽질기</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="삽질"><li><a href="../../삽질/2024-02-네트워크-삽질" data-for="삽질/2024-02-네트워크-삽질">2024-02 네트워크 삽질</a></li><li><a href="../../삽질/OpenCV-on-mac" data-for="삽질/OpenCV-on-mac">[OpenCV] Xcode OpenCV 설치 및 세팅</a></li><li><a href="../../삽질/Rosetta+Conda-Env-Setting" data-for="삽질/Rosetta+Conda-Env-Setting">[Conda] Rosetta + Conda Env 세팅</a></li><li><a href="../../삽질/Rosetta+Conda-ROS-Setting" data-for="삽질/Rosetta+Conda-ROS-Setting">[ROS] Rosetta + Conda로 ROS 세팅</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div><div class="recent-notes desktop-only"><h3>Recent Notes</h3><ul class="recent-ul"><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../../ARM/Registers/SPSel" class="internal">SPSel</a></h3></div><p class="meta">Mar 26, 2024</p><ul class="tags"></ul></div></li><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../../ARM/Instructions/MSR" class="internal">MSR</a></h3></div><p class="meta">Mar 26, 2024</p><ul class="tags"></ul></div></li><li class="recent-li"><div class="section"><div class="desc"><h3><a href="../../ARM/Registers/DAIF" class="internal">DAIF</a></h3></div><p class="meta">Mar 26, 2024</p><ul class="tags"></ul></div></li></ul></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container " aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../Projects/">Projects</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../Projects/Cosmos-(ongoing)/">Cosmos (ongoing)</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Interrupt Handling</a></div></nav><h1 class="article-title ">Interrupt Handling</h1><p class="content-meta ">Mar 26, 2024, 2 min read</p><div class="toc mobile-only"><button type="button" id="toc" class><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content"><ul class="overflow"><li class="depth-0"><a href="#arm-interrupt-structure" data-for="arm-interrupt-structure">ARM Interrupt Structure</a></li><li class="depth-0"><a href="#daif-register" data-for="daif-register">DAIF Register</a></li><li class="depth-2"><a href="#registers-used-to-configure-coretex-m-exceptions" data-for="registers-used-to-configure-coretex-m-exceptions">Registers used to configure Coretex-M Exceptions</a></li><li class="depth-0"><a href="#arm-generic-interrupt-controller-gic" data-for="arm-generic-interrupt-controller-gic">ARM Generic Interrupt Controller (GIC)</a></li><li class="depth-1"><a href="#gic-registers" data-for="gic-registers">GIC Registers</a></li><li class="depth-0"><a href="#arm-processor-modes" data-for="arm-processor-modes">ARM Processor Modes</a></li><li class="depth-0"><a href="#initialization-progress" data-for="initialization-progress">Initialization progress</a></li><li class="depth-1"><a href="#acpi-vs-devicetree" data-for="acpi-vs-devicetree">ACPI vs DeviceTree</a></li><li class="depth-1"><a href="#device-tree" data-for="device-tree">Device Tree</a></li></ul></div></div></div></div><article class="popover-hint"><h1 id="arm-interrupt-structure">ARM Interrupt Structure<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#arm-interrupt-structure" class="internal alias"> §</a></h1>
+<p></p><blockquote class="transclude" data-url="../../ARM/Interrupt" data-block><h1>Interrupt</h1><p><a href="https://www.geeksforgeeks.org/arm-interrupt-structure/" class="external">https://www.geeksforgeeks.org/arm-interrupt-structure/<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p><a href="../../ARM/Interrupt" class="internal">Link to original</a></blockquote><p></p>
+<h1 id="daif-register">DAIF Register<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#daif-register" class="internal alias"> §</a></h1>
+<ul>
+<li>enable interrupt: <code>asm!(&quot;msr DAIFClr, #0xf&quot;, options(nomem, nostack));</code></li>
+<li>disable interrupt: <code>asm!(&quot;msr DAIFClr, #0xf&quot;, options(nomem, nostack));</code></li>
+</ul>
+<p></p><blockquote class="transclude" data-url="../../ARM/Registers/DAIF" data-block><h1>DAIF</h1><h1 id="daif-interrupt-mask-bits">DAIF: Interrupt Mask Bits<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#daif-interrupt-mask-bits" class="internal alias"> §</a></h1>
+<p>Allows access to the interrupt mask bits.
+<a href="https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF--Interrupt-Mask-Bits?lang=en" class="external">https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits?lang=en<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="d-bit9">D <code>bit[9]</code><a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#d-bit9" class="internal alias"> §</a></h2>
+<p><strong>Debug</strong>
+Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level
+When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D
+Defaults to 1 on warm reset</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>D</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>not masked</td></tr><tr><td>1</td><td>masked</td></tr></tbody></table></div>
+<h2 id="a-bit8">A <code>bit[8]</code><a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-bit8" class="internal alias"> §</a></h2>
+<p>SError(SystemError) Exception mask bit
+Defaults to 1 on warm reset</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>A</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>Exception not masked</td></tr><tr><td>1</td><td>Exception masked</td></tr></tbody></table></div>
+<h2 id="i-bit7">I <code>bit[7]</code><a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#i-bit7" class="internal alias"> §</a></h2>
+<p><strong>IRQ</strong> mask bit
+Defaults to 1 on warm reset</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>I</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>Exception not masked</td></tr><tr><td>1</td><td>Exception masked</td></tr></tbody></table></div>
+<h2 id="f-bit6">F <code>bit[6]</code><a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#f-bit6" class="internal alias"> §</a></h2>
+<p><strong>FIQ</strong> mask bit
+Defaults to 1 on warm reset</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>F</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>Exception not masked</td></tr><tr><td>1</td><td>Exception masked</td></tr></tbody></table></div><a href="../../ARM/Registers/DAIF" class="internal">Link to original</a></blockquote><p></p>
+<h3 id="registers-used-to-configure-coretex-m-exceptions">Registers used to configure Coretex-M Exceptions<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#registers-used-to-configure-coretex-m-exceptions" class="internal alias"> §</a></h3>
+<p><a href="https://interrupt.memfault.com/blog/arm-cortex-m-exceptions-and-nvic" class="external">https://interrupt.memfault.com/blog/arm-cortex-m-exceptions-and-nvic<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h1 id="arm-generic-interrupt-controller-gic">ARM Generic Interrupt Controller (GIC)<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#arm-generic-interrupt-controller-gic" class="internal alias"> §</a></h1>
+<p><a href="https://developer.arm.com/documentation/ihi0069/latest/" class="external">https://developer.arm.com/documentation/ihi0069/latest/<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="gic-registers">GIC Registers<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gic-registers" class="internal alias"> §</a></h2>
+<ul>
+<li>
+<p>GICD: Distributor Registers</p>
+</li>
+<li>
+<p>GICR: Redisbutor Registors</p>
+</li>
+<li>
+<p>GITS: ITS registers
+Refer to <a href="https://developer.arm.com/documentation/ihi0069/latest/" class="external">GIC Architecture Specification<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> 1.3.3: GIC Control and Configuration</p>
+</li>
+<li>
+<p>Difference between SGI PPI SPI: <a href="https://stackoverflow.com/questions/27709349/what-is-the-difference-between-ppi-spi-and-sgi-interrupts" class="external">https://stackoverflow.com/questions/27709349/what-is-the-difference-between-ppi-spi-and-sgi-interrupts<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<ul>
+<li>SGI: Software Generated Interrupt</li>
+<li>PPI: Private Peripheral Interrupt</li>
+<li>SPI: Shared Peripheral Interrupt</li>
+</ul>
+</li>
+</ul>
+<h1 id="arm-processor-modes">ARM Processor Modes<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#arm-processor-modes" class="internal alias"> §</a></h1>
+<p></p><blockquote class="transclude" data-url="../../ARM/Processor-Modes" data-block><h1>Processor Modes</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Mode</th><th>Description</th><th>CPSR M[4:0]</th></tr></thead><tbody><tr><td>User</td><td>User Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다. 다른 모드(SVC)로 이동하기 위한 방법으로는 소프트웨어 인터럽트를 발생시킨다.</td><td>10000b</td></tr><tr><td>FIQ(Fast IRQ)</td><td>2개의 인터럽트 소스 중 아주 빠르게 인터럽트를 처리할 수 있도록 구성된 모드이다. 빠른 처리를 위해서 Exception Vector에서도 <strong>최하단에 존재</strong>하고 별도의 레지스터를 소유한다.</td><td>10001b</td></tr><tr><td>IRQ(Interrupt Request)</td><td>일반적으로 사용되는 인터럽트로 외부 장치에서 요청되는 하드웨어적인 IRQ의 발생에 의해 ARM Core는 IRQ모드로 전환하고 인터럽트를 처리한다.</td><td>10010b</td></tr><tr><td>SVC(Superviser)</td><td>대부분의 시스템 자원을 자유롭게 관리할 수 있는 동작모드로 <strong>주로 커널이나 디바이스 드라이버를 처리할 때(System Call)</strong> 동작되는 모드이다.Reset 신호 입력 시 및 SWI가 발생하면 SVC Mode로 전환된다.</td><td>10011b</td></tr><tr><td>Abort</td><td>메모리에서 명령을 읽거나 데이터를 읽거나 쓸때 오류가 발생할 때 Abort Mode로 전환하여 오류를 처리한다. 커널등의 패닉시 Abort Mode로 전환되어 스택 내용이 전달됨을 알 수 있다.</td><td>10111b</td></tr><tr><td>Undefined</td><td>명령어를 읽어 실행하고자 하나 읽어온 명령이 디코더에 정의되어 있지 않은 명령인 경우 발생되는 오류를 처리하는 모드이다.</td><td>11011b</td></tr><tr><td>System</td><td>User Mode와 동일한 Register를 사용하고 동일한 용도로 사용된다. User Mode와의 차이점은 특권을 갖고 있다는 것이다. (ex : OS Kernel)</td><td>11111b</td></tr></tbody></table></div>
+<p><a href="https://julrams.tistory.com/12" class="external">https://julrams.tistory.com/12<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p><a href="../../ARM/Processor-Modes" class="internal">Link to original</a></blockquote><p></p>
+<h1 id="initialization-progress">Initialization progress<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#initialization-progress" class="internal alias"> §</a></h1>
+<p>FDT (Flattened Device Tree)
+DTB (Device Tree Blob)
+.dts (Device tree source - board-level definitions)
+.dtsi (Device tree source include - SoC level definitions)
+.dtb (device tree blob)</p>
+<h2 id="acpi-vs-devicetree">ACPI vs DeviceTree<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#acpi-vs-devicetree" class="internal alias"> §</a></h2>
+<ul>
+<li>ACPI started as an interface between firmware (formerly BIOS) and OS for things like power management, but also things like platform device probing</li>
+<li>DT was always (even long before ACPI existed) about declarative platform device descriptions (probing and configuration), so the OS can properly initialize all drivers, configure operation points, etc, etc.</li>
+</ul>
+<h2 id="device-tree">Device Tree<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#device-tree" class="internal alias"> §</a></h2>
+<p>Device Tree Starting Address 0x4000_0000 (== RAM starting Address)</p>
+<ul>
+<li>qemu에서 Device Tree를 추출하였음<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref aria-describedby="footnote-label" class="internal alias">1</a></sup></li>
+</ul>
+<pre><code>qemu-system-aarch64 -machine virt -machine dumpdtb=qemu.dtb -cpu cortex-a76
+dtc -I dtb -O dts qemu.dtb -o qemu.dts
+</code></pre>
+<p>실제 device에서는 <code>RAM_START</code> address인 <code>0x40000000</code>에 할당됨
+접근 과정 확인위해 hermit-loader<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref aria-describedby="footnote-label" class="internal alias">2</a></sup> 참조하였음.</p>
+<ul>
+<li>
+<p>device tree의 구조 확인
+Flattened Device Tree (FDT) Specification <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref aria-describedby="footnote-label" class="internal alias">3</a></sup> 참조하였음.</p>
+</li>
+<li>
+<p>device tree에서 timer property의 구조 확인 및 slicing 완료 (<code>parse_irqcells</code>)
+<a href="https://kernel.org/doc/Documentation/devicetree/bindings/arm/arch_timer.txt" class="external">https://kernel.org/doc/Documentation/devicetree/bindings/arm/arch_timer.txt<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<a href="https://www.kernel.org/doc/Documentation/devicetree/bindings/interrupt-controller/arm%2Cgic-v3.txt" class="external">https://www.kernel.org/doc/Documentation/devicetree/bindings/interrupt-controller/arm%2Cgic-v3.txt<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="c" data-theme="github-dark github-light"><code data-language="c" data-theme="github-dark github-light" style="display:grid;"><span data-line><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">    timer {</span></span>
+<span data-line><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">        interrupts </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;">=</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> &lt;0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">01</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">0d</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">104</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">01</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">0e</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">104</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">01</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">0b</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">104</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">01</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">0a</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;"> 0x</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">104</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;">></span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">;</span></span>
+<span data-line><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">        always</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;">-</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">on;</span></span>
+<span data-line><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">        compatible </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49;">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62;"> &quot;arm,armv8-timer</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5;">\0</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62;">arm,armv7-timer&quot;</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">;</span></span>
+<span data-line><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E;">    };</span></span></code></pre></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>irqtype</th><th>irq</th><th>irqflags</th></tr></thead><tbody><tr><td>secure</td><td>0x01</td><td>0x0d</td><td>0x104</td></tr><tr><td>non-secure</td><td>0x01</td><td>0x0e</td><td>0x104</td></tr><tr><td>virtual</td><td>0x01</td><td>0x0b</td><td>0x104</td></tr><tr><td>hypervisor</td><td>0x01</td><td>0x0a</td><td>0x104</td></tr></tbody></table></div>
+<ul>
+<li>irq.rs 에 globally access 가능한 gic 선언중..
+<ul>
+<li>lock?</li>
+<li><code>OnceCell</code> (writes only once)</li>
+</ul>
+</li>
+</ul>
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes<a aria-hidden="true" tabindex="-1" data-no-popover="true" href="#footnote-label" class="internal alias"> §</a></h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://docs.u-boot.org/en/latest/develop/devicetree/dt_qemu.html" class="external">https://docs.u-boot.org/en/latest/develop/devicetree/dt_qemu.html<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> <a href="#user-content-fnref-1" data-footnote-backref aria-label="Back to reference 1" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p>github.com/hermit-os/loader <a href="#user-content-fnref-2" data-footnote-backref aria-label="Back to reference 2" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+<li id="user-content-fn-3">
+<p><a href="https://devicetree-specification.readthedocs.io/en/v0.3/flattened-format.html" class="external">https://devicetree-specification.readthedocs.io/en/v0.3/flattened-format.html<svg class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> <a href="#user-content-fnref-3" data-footnote-backref aria-label="Back to reference 3" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+</ol>
+</section></article></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content"><ul class="overflow"><li class="depth-0"><a href="#arm-interrupt-structure" data-for="arm-interrupt-structure">ARM Interrupt Structure</a></li><li class="depth-0"><a href="#daif-register" data-for="daif-register">DAIF Register</a></li><li class="depth-2"><a href="#registers-used-to-configure-coretex-m-exceptions" data-for="registers-used-to-configure-coretex-m-exceptions">Registers used to configure Coretex-M Exceptions</a></li><li class="depth-0"><a href="#arm-generic-interrupt-controller-gic" data-for="arm-generic-interrupt-controller-gic">ARM Generic Interrupt Controller (GIC)</a></li><li class="depth-1"><a href="#gic-registers" data-for="gic-registers">GIC Registers</a></li><li class="depth-0"><a href="#arm-processor-modes" data-for="arm-processor-modes">ARM Processor Modes</a></li><li class="depth-0"><a href="#initialization-progress" data-for="initialization-progress">Initialization progress</a></li><li class="depth-1"><a href="#acpi-vs-devicetree" data-for="acpi-vs-devicetree">ACPI vs DeviceTree</a></li><li class="depth-1"><a href="#device-tree" data-for="device-tree">Device Tree</a></li></ul></div></div><div class="graph desktop-only"><h3>Graph View</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[]}"></div><svg version="1.1" id="global-graph-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+	s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+	c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+	C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+	c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+	v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+	s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+	C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+	S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+	s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+	s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[]}"></div></div></div><div class="backlinks desktop-only"><h3>Backlinks</h3><ul class="overflow"><li>No backlinks found</li></ul></div><div class="explorer mobile-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;ARM&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;ARM/Instructions&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;ARM/Registers&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Flutter&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-APIs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Kernel-Labs&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Linux/Linux-Commands&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cookie&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/Cosmos-(ongoing)&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/OS-Assignments&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Projects/WePlan&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;삽질&quot;,&quot;collapsed&quot;:true}]"><h1>Explorer</h1><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM"><a href="../../ARM" data-for="ARM" class="folder-title">ARM</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM/Instructions"><a href="../../ARM/Instructions" data-for="Instructions" class="folder-title">Instructions</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM/Instructions"><li><a href="../../ARM/Instructions/MSR" data-for="ARM/Instructions/MSR">MSR</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="ARM/Registers"><a href="../../ARM/Registers" data-for="Registers" class="folder-title">Registers</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="ARM/Registers"><li><a href="../../ARM/Registers/DAIF" data-for="ARM/Registers/DAIF">DAIF</a></li><li><a href="../../ARM/Registers/SPSel" data-for="ARM/Registers/SPSel">SPSel</a></li></ul></div></li><li><a href="../../ARM/Interrupt" data-for="ARM/Interrupt">Interrupt</a></li><li><a href="../../ARM/Processor-Modes" data-for="ARM/Processor-Modes">Processor Modes</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Flutter"><a href="../../Flutter" data-for="Flutter" class="folder-title">Flutter</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Flutter"><li><a href="../../Flutter/Architecture" data-for="Flutter/Architecture">Architecture</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux"><a href="../../Linux" data-for="Linux" class="folder-title">Linux</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-APIs"><a href="../../Linux/Kernel-APIs" data-for="Kernel-APIs" class="folder-title">Kernel APIs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-APIs"><li><a href="../../Linux/Kernel-APIs/kernel-↔-user" data-for="Linux/Kernel-APIs/kernel-↔-user">kernel ↔ user</a></li><li><a href="../../Linux/Kernel-APIs/mknod" data-for="Linux/Kernel-APIs/mknod">mknod</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Kernel-Labs"><a href="../../Linux/Kernel-Labs" data-for="Kernel-Labs" class="folder-title">Kernel Labs</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Kernel-Labs"><li><a href="../../Linux/Kernel-Labs/00_Introduction" data-for="Linux/Kernel-Labs/00_Introduction">Introduction</a></li><li><a href="../../Linux/Kernel-Labs/03_Character-Device-Drivers" data-for="Linux/Kernel-Labs/03_Character-Device-Drivers">Character Device Drivers</a></li><li><a href="../../Linux/Kernel-Labs/04_IO-access-and-Interrupts" data-for="Linux/Kernel-Labs/04_IO-access-and-Interrupts">I/O access and Interrupts</a></li><li><a href="../../Linux/Kernel-Labs/05_Deferred-Work" data-for="Linux/Kernel-Labs/05_Deferred-Work">Deferred Work</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Linux/Linux-Commands"><a href="../../Linux/Linux-Commands" data-for="Linux-Commands" class="folder-title">Linux Commands</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Linux/Linux-Commands"><li><a href="../../Linux/Linux-Commands/Linux-BIOS" data-for="Linux/Linux-Commands/Linux-BIOS">Linux BIOS</a></li><li><a href="../../Linux/Linux-Commands/rsync" data-for="Linux/Linux-Commands/rsync">rsync</a></li><li><a href="../../Linux/Linux-Commands/Upgrade-Debian" data-for="Linux/Linux-Commands/Upgrade-Debian">Upgrade Debian</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects"><a href="../../Projects" data-for="Projects" class="folder-title">Projects</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cookie"><a href="../../Projects/Cookie" data-for="Cookie" class="folder-title">Cookie</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cookie"><li><a href="../../Projects/Cookie/0314_아이디어발표" data-for="Projects/Cookie/0314_아이디어발표">3/14 아이디어 발표</a></li><li><a href="../../Projects/Cookie/0328_발표" data-for="Projects/Cookie/0328_발표">3/28 5주차 발표</a></li><li><a href="../../Projects/Cookie/0411_발표" data-for="Projects/Cookie/0411_발표">4/11 7주차 발표</a></li><li><a href="../../Projects/Cookie/0425_발표" data-for="Projects/Cookie/0425_발표">4/25 9주차 발표</a></li><li><a href="../../Projects/Cookie/0509_발표" data-for="Projects/Cookie/0509_발표">5/9 13주차 발표</a></li><li><a href="../../Projects/Cookie/0523_발표" data-for="Projects/Cookie/0523_발표">5/23 15주차 발표</a></li><li><a href="../../Projects/Cookie/0613_발표" data-for="Projects/Cookie/0613_발표">6/13 18주차 발표</a></li><li><a href="../../Projects/Cookie/0620_최종발표" data-for="Projects/Cookie/0620_최종발표">6/20 1학기 최종발표</a></li><li><a href="../../Projects/Cookie/0911_소개발표" data-for="Projects/Cookie/0911_소개발표">9/11 2학기 소개발표</a></li><li><a href="../../Projects/Cookie/0925_발표" data-for="Projects/Cookie/0925_발표">9/25 4주차 발표</a></li><li><a href="../../Projects/Cookie/1023_발표" data-for="Projects/Cookie/1023_발표">10/23 8주차 발표</a></li><li><a href="../../Projects/Cookie/1106_발표" data-for="Projects/Cookie/1106_발표">11/6 10주차 발표</a></li><li><a href="../../Projects/Cookie/1120_발표" data-for="Projects/Cookie/1120_발표">11/20 12주차 발표</a></li><li><a href="../../Projects/Cookie/1211_발표" data-for="Projects/Cookie/1211_발표">12/11 14주차 발표</a></li><li><a href="../../Projects/Cookie/1218_최종발표" data-for="Projects/Cookie/1218_최종발표">12/18 2학기 최종발표</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/Cosmos-(ongoing)"><a href="../../Projects/Cosmos-(ongoing)" data-for="Cosmos-(ongoing)" class="folder-title">Cosmos (ongoing)</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/Cosmos-(ongoing)"><li><a href="../../Projects/Cosmos-(ongoing)/01_Intro" data-for="Projects/Cosmos-(ongoing)/01_Intro">Intro</a></li><li><a href="../../Projects/Cosmos-(ongoing)/02_Booting-(UEFI)" data-for="Projects/Cosmos-(ongoing)/02_Booting-(UEFI)">Booting (UEFI)</a></li><li><a href="../../Projects/Cosmos-(ongoing)/03_Interrupt-Handling" data-for="Projects/Cosmos-(ongoing)/03_Interrupt-Handling">Interrupt Handling</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/OS-Assignments"><a href="../../Projects/OS-Assignments" data-for="OS-Assignments" class="folder-title">OS Assignments</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/OS-Assignments"><li><a href="../../Projects/OS-Assignments/pa0" data-for="Projects/OS-Assignments/pa0">PA0: Warming up C programming</a></li><li><a href="../../Projects/OS-Assignments/pa1" data-for="Projects/OS-Assignments/pa1">PA1: My Amazing Shell</a></li><li><a href="../../Projects/OS-Assignments/pa2" data-for="Projects/OS-Assignments/pa2">PA2: Simulating Process Schedulers</a></li><li><a href="../../Projects/OS-Assignments/pa3" data-for="Projects/OS-Assignments/pa3">PA3: Virtual Memory Simulator</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Projects/WePlan"><a href="../../Projects/WePlan" data-for="WePlan" class="folder-title">WePlan - 공동공간 예약 서비스</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Projects/WePlan"><li><a href="../../Projects/WePlan/01_Project-Proposal" data-for="Projects/WePlan/01_Project-Proposal">Project Proposal</a></li><li><a href="../../Projects/WePlan/02_Requirements-Specification" data-for="Projects/WePlan/02_Requirements-Specification">Requirements Specification</a></li><li><a href="../../Projects/WePlan/03_Design-Document" data-for="Projects/WePlan/03_Design-Document">Design Document</a></li><li><a href="../../Projects/WePlan/04_Final-Project-Report" data-for="Projects/WePlan/04_Final-Project-Report">Final Project Report</a></li></ul></div></li><li><a href="../../Projects/Doge_Driver" data-for="Projects/Doge_Driver">Doge Driver</a></li><li><a href="../../Projects/Elevator-Controller" data-for="Projects/Elevator-Controller">엘레베이터 컨트롤러</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="삽질"><a href="../../삽질" data-for="삽질" class="folder-title">🚧 삽질기</a></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="삽질"><li><a href="../../삽질/2024-02-네트워크-삽질" data-for="삽질/2024-02-네트워크-삽질">2024-02 네트워크 삽질</a></li><li><a href="../../삽질/OpenCV-on-mac" data-for="삽질/OpenCV-on-mac">[OpenCV] Xcode OpenCV 설치 및 세팅</a></li><li><a href="../../삽질/Rosetta+Conda-Env-Setting" data-for="삽질/Rosetta+Conda-Env-Setting">[Conda] Rosetta + Conda Env 세팅</a></li><li><a href="../../삽질/Rosetta+Conda-ROS-Setting" data-for="삽질/Rosetta+Conda-ROS-Setting">[ROS] Rosetta + Conda로 ROS 세팅</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div></div><footer class><hr/><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.1.5</a>, © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script type="application/javascript">// quartz/components/scripts/quartz/components/scripts/callout.inline.ts
+function toggleCallout() {
+  const outerBlock = this.parentElement;
+  outerBlock.classList.toggle(`is-collapsed`);
+  const collapsed = outerBlock.classList.contains(`is-collapsed`);
+  const height = collapsed ? this.scrollHeight : outerBlock.scrollHeight;
+  outerBlock.style.maxHeight = height + `px`;
+  let current = outerBlock;
+  let parent = outerBlock.parentElement;
+  while (parent) {
+    if (!parent.classList.contains(`callout`)) {
+      return;
+    }
+    const collapsed2 = parent.classList.contains(`is-collapsed`);
+    const height2 = collapsed2 ? parent.scrollHeight : parent.scrollHeight + current.scrollHeight;
+    parent.style.maxHeight = height2 + `px`;
+    current = parent;
+    parent = parent.parentElement;
+  }
+}
+function setupCallout() {
+  const collapsible = document.getElementsByClassName(
+    `callout is-collapsible`
+  );
+  for (const div of collapsible) {
+    const title = div.firstElementChild;
+    if (title) {
+      title.removeEventListener(`click`, toggleCallout);
+      title.addEventListener(`click`, toggleCallout);
+      const collapsed = div.classList.contains(`is-collapsed`);
+      const height = collapsed ? title.scrollHeight : div.scrollHeight;
+      div.style.maxHeight = height + `px`;
+    }
+  }
+}
+document.addEventListener(`nav`, setupCallout);
+window.addEventListener(`resize`, setupCallout);
+</script><script type="module">
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+          const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+          mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: 'loose',
+            theme: darkMode ? 'dark' : 'default'
+          });
+          document.addEventListener('nav', async () => {
+            await mermaid.run({
+              querySelector: '.mermaid'
+            })
+          });
+          </script><script type="application/javascript">
+          const socket = new WebSocket('ws://localhost:3001')
+          socket.addEventListener('message', () => document.location.reload())
+        </script><script src="../../postscript.js" type="module"></script></html>
