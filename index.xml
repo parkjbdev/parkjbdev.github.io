@@ -10,61 +10,61 @@
     <link>https://tech.parkjb.com/</link>
     <guid>https://tech.parkjb.com/</guid>
     <description> Programming Languages § Frameworks, Platforms and Libraries § Severs &amp; Databases § Environments &amp; Tools § 학력 § 2015.03 ~ 2018.02 단국대학교 사범대학 부속고등학교 졸업 2018.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:50 GMT</pubDate>
   </item><item>
     <title>[OpenCV] Xcode OpenCV 설치 및 세팅</title>
-    <link>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</link>
-    <guid>https://tech.parkjb.com/%EC%82%BD%EC%A7%88/OpenCV-on-mac</guid>
+    <link>https://tech.parkjb.com/%EB%92%A4%EC%A3%BD%EB%B0%95%EC%A3%BD/OpenCV-on-mac</link>
+    <guid>https://tech.parkjb.com/%EB%92%A4%EC%A3%BD%EB%B0%95%EC%A3%BD/OpenCV-on-mac</guid>
     <description>OpenCV 설치 § brew install opencv Dependency들 많아서 조금 걸림 OpenCV Library &amp; Header 추가 § Header &amp; Library 추가 § Targets - Build Settings에서 다음과 같이 설정 Setting경로Library Search Path/opt/homebrew/Cellar/opencv/버전명/libHeader Search Path/opt/homebrew/Cellar/opencv/버전명/include/opencv4 Disable Library Validation § Disable Library Validation 항목 체크해줄것 이거 안하면 라이브러리 못불러온다고 에러남 카메라 쓰면 그 밑에 Resource Access에서 Camera도 켜줄것!! Info.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:50 GMT</pubDate>
   </item><item>
     <title>Linux BIOS</title>
     <link>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</link>
     <guid>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</guid>
     <description>BIOS 진입법 sudo systemctl reboot --firmware-setup .</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>Upgrade Debian</title>
     <link>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</link>
     <guid>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</guid>
     <description>Installation § sudo apt update sudo apt upgrade -y sudo reboot sudo sed -i &#039;s/bullseye/bookworm/g&#039; /etc/apt/sources.list sudo apt upgrade --without-new-pkgs sudo apt full-upgrade Troubleshooting § Linux kernel build error: return code 11 dkms error § sudo dpkg --purge &lt;*-dkms&gt; &amp;&amp; sudo apt -f install # should find what package is occurring error # read logs # my case, /var/libs/dkms/kernel-mft-dkms/4.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>rsync</title>
     <link>https://tech.parkjb.com/Linux/Linux-Commands/rsync</link>
     <guid>https://tech.parkjb.com/Linux/Linux-Commands/rsync</guid>
     <description>rsync &lt;options&gt; &lt;source&gt; &lt;destination&gt; .</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>Linux</title>
     <link>https://tech.parkjb.com/Linux/</link>
     <guid>https://tech.parkjb.com/Linux/</guid>
     <description></description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>MSR</title>
     <link>https://tech.parkjb.com/ARM/Instructions/MSR</link>
     <guid>https://tech.parkjb.com/ARM/Instructions/MSR</guid>
     <description>https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference/Miscellaneous-ARM-instructions/MSR.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>Interrupt</title>
     <link>https://tech.parkjb.com/ARM/Interrupt</link>
     <guid>https://tech.parkjb.com/ARM/Interrupt</guid>
     <description>https://www.geeksforgeeks.org/arm-interrupt-structure/.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>Processor Modes</title>
     <link>https://tech.parkjb.com/ARM/Processor-Modes</link>
     <guid>https://tech.parkjb.com/ARM/Processor-Modes</guid>
     <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item><item>
     <title>DAIF</title>
     <link>https://tech.parkjb.com/ARM/Registers/DAIF</link>
     <guid>https://tech.parkjb.com/ARM/Registers/DAIF</guid>
     <description>DAIF: Interrupt Mask Bits § Allows access to the interrupt mask bits. https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits?lang=en D bit[9] § Debug Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D Defaults to 1 on warm reset DMeaning0not masked1masked A bit[8] § SError(SystemError) Exception mask bit Defaults to 1 on warm reset AMeaning0Exception not masked1Exception masked I bit[7] § IRQ mask bit Defaults to 1 on warm reset IMeaning0Exception not masked1Exception masked F bit[6] § FIQ mask bit Defaults to 1 on warm reset FMeaning0Exception not masked1Exception masked.</description>
-    <pubDate>Tue, 26 Mar 2024 14:36:24 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 14:39:49 GMT</pubDate>
   </item>
     </channel>
   </rss>
