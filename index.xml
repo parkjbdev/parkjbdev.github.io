@@ -6,65 +6,65 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Welcome!</title>
-    <link>https://tech.parkjb.com/</link>
-    <guid>https://tech.parkjb.com/</guid>
-    <description> Programming Languages § Frameworks, Platforms and Libraries § Severs &amp; Databases § Environments &amp; Tools § 학력 § 2015.03 ~ 2018.02 단국대학교 사범대학 부속고등학교 졸업 2018.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:56 GMT</pubDate>
+    <title>Linux BIOS</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</guid>
+    <description>BIOS 진입법 sudo systemctl reboot --firmware-setup .</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
+  </item><item>
+    <title>Upgrade Debian</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</guid>
+    <description>Installation § sudo apt update sudo apt upgrade -y sudo reboot sudo sed -i &#039;s/bullseye/bookworm/g&#039; /etc/apt/sources.list sudo apt upgrade --without-new-pkgs sudo apt full-upgrade Troubleshooting § Linux kernel build error: return code 11 dkms error § sudo dpkg --purge &lt;*-dkms&gt; &amp;&amp; sudo apt -f install # should find what package is occurring error # read logs # my case, /var/libs/dkms/kernel-mft-dkms/4.</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
+  </item><item>
+    <title>rsync</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/rsync</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/rsync</guid>
+    <description>rsync &lt;options&gt; &lt;source&gt; &lt;destination&gt; .</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
+  </item><item>
+    <title>Linux</title>
+    <link>https://tech.parkjb.com/Linux/</link>
+    <guid>https://tech.parkjb.com/Linux/</guid>
+    <description></description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
+  </item><item>
+    <title>MSR</title>
+    <link>https://tech.parkjb.com/ARM/Instructions/MSR</link>
+    <guid>https://tech.parkjb.com/ARM/Instructions/MSR</guid>
+    <description>https://developer.arm.com/documentation/dui0068/b/ARM-Instruction-Reference/Miscellaneous-ARM-instructions/MSR.</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
+  </item><item>
+    <title>Interrupt</title>
+    <link>https://tech.parkjb.com/ARM/Interrupt</link>
+    <guid>https://tech.parkjb.com/ARM/Interrupt</guid>
+    <description>https://www.geeksforgeeks.org/arm-interrupt-structure/.</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
   </item><item>
     <title>Processor Modes</title>
     <link>https://tech.parkjb.com/ARM/Processor-Modes</link>
     <guid>https://tech.parkjb.com/ARM/Processor-Modes</guid>
     <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
   </item><item>
     <title>DAIF</title>
     <link>https://tech.parkjb.com/ARM/Registers/DAIF</link>
     <guid>https://tech.parkjb.com/ARM/Registers/DAIF</guid>
     <description>DAIF: Interrupt Mask Bits § Allows access to the interrupt mask bits. https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits?lang=en D bit[9] § Debug Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D Defaults to 1 on warm reset DMeaning0not masked1masked A bit[8] § SError(SystemError) Exception mask bit Defaults to 1 on warm reset AMeaning0Exception not masked1Exception masked I bit[7] § IRQ mask bit Defaults to 1 on warm reset IMeaning0Exception not masked1Exception masked F bit[6] § FIQ mask bit Defaults to 1 on warm reset FMeaning0Exception not masked1Exception masked.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
   </item><item>
     <title>SPSel</title>
     <link>https://tech.parkjb.com/ARM/Registers/SPSel</link>
     <guid>https://tech.parkjb.com/ARM/Registers/SPSel</guid>
     <description>https://developer.arm.com/documentation/ddi0595/2021-12/AArch64-Registers/SPSel—Stack-Pointer-Select.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
   </item><item>
     <title>Architecture</title>
     <link>https://tech.parkjb.com/Flutter/Architecture</link>
     <guid>https://tech.parkjb.com/Flutter/Architecture</guid>
     <description>Reference § Flutter 인기 아키텍처 라이브러리 3종 비교 분석 - GetX vs BLoC vs Provider.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
-  </item><item>
-    <title>Flutter</title>
-    <link>https://tech.parkjb.com/Flutter/</link>
-    <guid>https://tech.parkjb.com/Flutter/</guid>
-    <description></description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
-  </item><item>
-    <title>kernel ↔ user</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-APIs/kernel-%E2%86%94-user</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-APIs/kernel-%E2%86%94-user</guid>
-    <description>https://archive.kernel.org/oldlinux/htmldocs/kernel-api/API-cdev-init.html put_user(type val, type *address) #include &lt;asm/uaccess.h&gt; store the value val to user space address address type can be 8, 16, 32, 64 bit (depends on hardware) get_user(type val, type *address) #include &lt;asm/uaccess.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
-  </item><item>
-    <title>mknod</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-APIs/mknod</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-APIs/mknod</guid>
-    <description>Usage § mknod NAME TYPE [MAJOR MINOR] TYPE: b, c, p, u MAJOR: major number MINOR: minor number Create a character device § mknod /dev/zero c 1 5.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
-  </item><item>
-    <title>Introduction</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</guid>
-    <description></description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
-  </item><item>
-    <title>Character Device Drivers</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-Labs/03_Character-Device-Drivers</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/03_Character-Device-Drivers</guid>
-    <description>Intro § UNIX 시스템에서는 모든 장치들을 파일로 취급한다. /dev 디렉토리에는 시스템에 연결된 모든 장치들이 파일 형태로 존재하고, open, write, close, lseek, mmap 등의 시스템 콜을 통해 운영체제에서 device driver로 접근할 수 있다.</description>
-    <pubDate>Tue, 26 Mar 2024 15:12:55 GMT</pubDate>
+    <pubDate>Tue, 26 Mar 2024 15:18:03 GMT</pubDate>
   </item>
     </channel>
   </rss>
