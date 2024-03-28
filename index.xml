@@ -6,65 +6,65 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2024-03-28</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</guid>
+    <description>음… 망함 왜인진 모르겠으나,, uefi 앱으로 제작하니 *.S 파일 컴파일할때 .size 같은 구문들을 이해를 못한다.</description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
+    <title>index</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</guid>
+    <description></description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
+    <title>Upgrade Debian</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</guid>
+    <description>Installation § sudo apt update sudo apt upgrade -y sudo reboot sudo sed -i &#039;s/bullseye/bookworm/g&#039; /etc/apt/sources.list sudo apt upgrade --without-new-pkgs sudo apt full-upgrade Troubleshooting § Linux kernel build error: return code 11 dkms error § sudo dpkg --purge &lt;*-dkms&gt; &amp;&amp; sudo apt -f install # should find what package is occurring error # read logs # my case, /var/libs/dkms/kernel-mft-dkms/4.</description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
+    <title>Linux Commands</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/</guid>
+    <description></description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
+    <title>rsync</title>
+    <link>https://tech.parkjb.com/Linux/Linux-Commands/rsync</link>
+    <guid>https://tech.parkjb.com/Linux/Linux-Commands/rsync</guid>
+    <description>rsync &lt;options&gt; &lt;source&gt; &lt;destination&gt; .</description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
+    <title>Linux</title>
+    <link>https://tech.parkjb.com/Linux/</link>
+    <guid>https://tech.parkjb.com/Linux/</guid>
+    <description></description>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
+  </item><item>
     <title>Branch</title>
     <link>https://tech.parkjb.com/ARM/Instructions/Branch</link>
     <guid>https://tech.parkjb.com/ARM/Instructions/Branch</guid>
     <description>B § B.cond § https://developer.arm.com/documentation/ddi0602/2023-12/Base-Instructions/B-cond—Branch-conditionally-?lang=en.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
   </item><item>
     <title>ERET</title>
     <link>https://tech.parkjb.com/ARM/Instructions/ERET</link>
     <guid>https://tech.parkjb.com/ARM/Instructions/ERET</guid>
     <description>https://developer.arm.com/documentation/ddi0602/2023-12/Base-Instructions/ERET—Exception-Return-?lang=en ERET: Exception Return §.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
   </item><item>
     <title>cmp</title>
     <link>https://tech.parkjb.com/ARM/Instructions/cmp</link>
     <guid>https://tech.parkjb.com/ARM/Instructions/cmp</guid>
     <description>https://developer.arm.com/documentation/107829/0200/Test-instructions—branching—and-loops.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
   </item><item>
     <title>A-Profile A64 Instructions</title>
     <link>https://tech.parkjb.com/ARM/Instructions/</link>
     <guid>https://tech.parkjb.com/ARM/Instructions/</guid>
     <description>https://developer.arm.com/documentation/ddi0602/2023-12/.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>Interrupt</title>
-    <link>https://tech.parkjb.com/ARM/Interrupt</link>
-    <guid>https://tech.parkjb.com/ARM/Interrupt</guid>
-    <description>Interrupt Structure § https://www.geeksforgeeks.org/arm-interrupt-structure/ GIC § https://wiki.osdev.org/Generic_Interrupt_Controller_versions_3_and_4 Trigger Type § Edge Triggered Level Sensitive .</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>Learn The Architecture</title>
-    <link>https://tech.parkjb.com/ARM/Learn-The-Architecture</link>
-    <guid>https://tech.parkjb.com/ARM/Learn-The-Architecture</guid>
-    <description>Exception Model § https://developer.arm.com/documentation/102412/0103.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>Processor Modes</title>
-    <link>https://tech.parkjb.com/ARM/Processor-Modes</link>
-    <guid>https://tech.parkjb.com/ARM/Processor-Modes</guid>
-    <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>DAIF</title>
-    <link>https://tech.parkjb.com/ARM/Registers/DAIF</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/DAIF</guid>
-    <description>DAIF: Interrupt Mask Bits § Allows access to the interrupt mask bits. https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits D bit[9] § Debug Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D Defaults to 1 on warm reset DMeaning0not masked1masked A bit[8] § SError(SystemError) Exception mask bit Defaults to 1 on warm reset AMeaning0Exception not masked1Exception masked I bit[7] § IRQ mask bit Defaults to 1 on warm reset IMeaning0Exception not masked1Exception masked F bit[6] § FIQ mask bit Defaults to 1 on warm reset FMeaning0Exception not masked1Exception masked.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>SPSel</title>
-    <link>https://tech.parkjb.com/ARM/Registers/SPSel</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/SPSel</guid>
-    <description>https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/SPSel—Stack-Pointer-Select.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
-  </item><item>
-    <title>A-Profile Registers</title>
-    <link>https://tech.parkjb.com/ARM/Registers/</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/</guid>
-    <description>https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers.</description>
-    <pubDate>Wed, 27 Mar 2024 11:02:57 GMT</pubDate>
+    <pubDate>Thu, 28 Mar 2024 15:18:07 GMT</pubDate>
   </item>
     </channel>
   </rss>
