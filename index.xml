@@ -6,65 +6,65 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>00_Mid Report</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/00_Mid-Report</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/00_Mid-Report</guid>
+    <description></description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
+    <title>Virt Board Memory Map</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</guid>
+    <description>hw/arm/virt.c /* Addresses and sizes of our components. * 0.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
     <title>2024-03-28</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</guid>
     <description>음… 망함 왜인진 모르겠으나,, uefi 앱으로 제작하니 *.S 파일 컴파일할때 .size 같은 구문들을 이해를 못한다.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:02 GMT</pubDate>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
+    <title>2024-03-29</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</guid>
+    <description>Linux Memory Layout § https://hackyboiz.github.io/2022/01/14/poosic/linux-memory-layout/ Code Segment § R-X Data Segment § RW- R—: rodata BSS Segment § Global Variable RW- Stack Segment § Heap Segment §.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
+    <title>2024-04-01</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</guid>
+    <description>Memory Map § AddressRole0x0boot flash (-bios or pflash)0x09000000UART (pl011)0x40000000Ram Starting point (qemu will load dtb here)0x40200000kernel_start(0x40218000)__boot_core_stack_start (size: 0x4000)(0x4021c000)__boot_core_stack_end_exclusive, kernel_end.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
+    <title>2024-04-03</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</guid>
+    <description>Linker Script § /* Parts of this linker script are directly taken from Andre Richters Project: * https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials/blob/master/16_virtual_mem_part4_higher_half_kernel/src/bsp/raspberrypi/link.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+  </item><item>
+    <title>2024-04-08</title>
+    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</link>
+    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</guid>
+    <description>armv7: https://developer.arm.com/documentation/den0024/a/AArch64-Exception-Handling/AArch64-exception-table?lang=en#BABGIIHH armv8: https://developer.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
   </item><item>
     <title>index</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</guid>
     <description></description>
-    <pubDate>Sat, 30 Mar 2024 07:46:02 GMT</pubDate>
+    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
   </item><item>
-    <title>Branch</title>
-    <link>https://tech.parkjb.com/ARM/Instructions/Branch</link>
-    <guid>https://tech.parkjb.com/ARM/Instructions/Branch</guid>
-    <description>B § B.cond § https://developer.arm.com/documentation/ddi0602/2023-12/Base-Instructions/B-cond—Branch-conditionally-?lang=en.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
+    <title>HCR_EL2</title>
+    <link>https://tech.parkjb.com/ARM/Registers/HCR_EL2</link>
+    <guid>https://tech.parkjb.com/ARM/Registers/HCR_EL2</guid>
+    <description>HCR_EL2 § Purpose: Provides configuration controls for virtualization, including defining whether various operations are trapped to EL2. Reference: https://developer.</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:22 GMT</pubDate>
   </item><item>
-    <title>ERET</title>
-    <link>https://tech.parkjb.com/ARM/Instructions/ERET</link>
-    <guid>https://tech.parkjb.com/ARM/Instructions/ERET</guid>
-    <description>https://developer.arm.com/documentation/ddi0602/2023-12/Base-Instructions/ERET—Exception-Return-?lang=en ERET: Exception Return §.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>cmp</title>
-    <link>https://tech.parkjb.com/ARM/Instructions/cmp</link>
-    <guid>https://tech.parkjb.com/ARM/Instructions/cmp</guid>
-    <description>https://developer.arm.com/documentation/107829/0200/Test-instructions—branching—and-loops.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>A-Profile A64 Instructions</title>
-    <link>https://tech.parkjb.com/ARM/Instructions/</link>
-    <guid>https://tech.parkjb.com/ARM/Instructions/</guid>
-    <description>https://developer.arm.com/documentation/ddi0602/2023-12/.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>Interrupt</title>
-    <link>https://tech.parkjb.com/ARM/Interrupt</link>
-    <guid>https://tech.parkjb.com/ARM/Interrupt</guid>
-    <description>Interrupt Structure § https://www.geeksforgeeks.org/arm-interrupt-structure/ GIC § https://wiki.osdev.org/Generic_Interrupt_Controller_versions_3_and_4 Trigger Type § Edge Triggered Level Sensitive .</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>Learn The Architecture</title>
-    <link>https://tech.parkjb.com/ARM/Learn-The-Architecture</link>
-    <guid>https://tech.parkjb.com/ARM/Learn-The-Architecture</guid>
-    <description>Exception Model § https://developer.arm.com/documentation/102412/0103.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>Processor Modes</title>
-    <link>https://tech.parkjb.com/ARM/Processor-Modes</link>
-    <guid>https://tech.parkjb.com/ARM/Processor-Modes</guid>
-    <description> ModeDescriptionCPSR M[4:0]UserUser Task나 Application을 수항 할때의 동작모드로 모든 동작모드 중 유일하게 비특권 모드이다. User Mode는 메모리, I/O장치와 같은 시스템 자원을 사용하는데 제한을 두어 사용자의 실수를 방지한다.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
-  </item><item>
-    <title>DAIF</title>
-    <link>https://tech.parkjb.com/ARM/Registers/DAIF</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/DAIF</guid>
-    <description>DAIF: Interrupt Mask Bits § Allows access to the interrupt mask bits. https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/DAIF—Interrupt-Mask-Bits D bit[9] § Debug Whether to mask Watchpoint, Breakpoint, Software Step exceptions targeted at the current Exception Level When the target Exception level of debug exception is higher than the current Exception level, the exception will not be masked by D Defaults to 1 on warm reset DMeaning0not masked1masked A bit[8] § SError(SystemError) Exception mask bit Defaults to 1 on warm reset AMeaning0Exception not masked1Exception masked I bit[7] § IRQ mask bit Defaults to 1 on warm reset IMeaning0Exception not masked1Exception masked F bit[6] § FIQ mask bit Defaults to 1 on warm reset FMeaning0Exception not masked1Exception masked.</description>
-    <pubDate>Sat, 30 Mar 2024 07:46:01 GMT</pubDate>
+    <title>SPSel</title>
+    <link>https://tech.parkjb.com/ARM/Registers/SPSel</link>
+    <guid>https://tech.parkjb.com/ARM/Registers/SPSel</guid>
+    <description>SPSel § Purpose: Allows the Stack Pointer to be selected between SP_EL0 and SP_ELx. Reference: https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/SPSel—Stack-Pointer-Select .</description>
+    <pubDate>Thu, 25 Apr 2024 19:29:22 GMT</pubDate>
   </item>
     </channel>
   </rss>
