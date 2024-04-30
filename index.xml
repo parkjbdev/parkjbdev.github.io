@@ -6,65 +6,65 @@
       <description>Last 10 notes on 🪴 PARKJB TECH</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>00_Mid Report</title>
-    <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/00_Mid-Report</link>
-    <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/00_Mid-Report</guid>
-    <description></description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
-  </item><item>
     <title>Virt Board Memory Map</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</guid>
     <description>hw/arm/virt.c /* Addresses and sizes of our components. * 0.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>2024-03-28</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</guid>
     <description>음… 망함 왜인진 모르겠으나,, uefi 앱으로 제작하니 *.S 파일 컴파일할때 .size 같은 구문들을 이해를 못한다.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>2024-03-29</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</guid>
     <description>Linux Memory Layout § https://hackyboiz.github.io/2022/01/14/poosic/linux-memory-layout/ Code Segment § R-X Data Segment § RW- R—: rodata BSS Segment § Global Variable RW- Stack Segment § Heap Segment §.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>2024-04-01</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</guid>
     <description>Memory Map § AddressRole0x0boot flash (-bios or pflash)0x09000000UART (pl011)0x40000000Ram Starting point (qemu will load dtb here)0x40200000kernel_start(0x40218000)__boot_core_stack_start (size: 0x4000)(0x4021c000)__boot_core_stack_end_exclusive, kernel_end.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>2024-04-03</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</guid>
     <description>Linker Script § /* Parts of this linker script are directly taken from Andre Richters Project: * https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials/blob/master/16_virtual_mem_part4_higher_half_kernel/src/bsp/raspberrypi/link.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>2024-04-08</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</guid>
     <description>armv7: https://developer.arm.com/documentation/den0024/a/AArch64-Exception-Handling/AArch64-exception-table?lang=en#BABGIIHH armv8: https://developer.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
     <title>index</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</guid>
     <description></description>
-    <pubDate>Thu, 25 Apr 2024 19:29:23 GMT</pubDate>
+    <pubDate>Tue, 30 Apr 2024 01:47:08 GMT</pubDate>
   </item><item>
-    <title>HCR_EL2</title>
-    <link>https://tech.parkjb.com/ARM/Registers/HCR_EL2</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/HCR_EL2</guid>
-    <description>HCR_EL2 § Purpose: Provides configuration controls for virtualization, including defining whether various operations are trapped to EL2. Reference: https://developer.</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:22 GMT</pubDate>
+    <title>I/O access and Interrupts</title>
+    <link>https://tech.parkjb.com/Linux/Kernel-Labs/04_IO-access-and-Interrupts</link>
+    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/04_IO-access-and-Interrupts</guid>
+    <description>Objectives § 주변장치와의 소통 Interrupt Handler 구현 Synchronizing interrupts with Process Context Intro § Background Information § I/O Ports § Definition: set of I/O addresses can be mapped to physical memory addresses → communicate directly with the device through instructions port is differentiated by the number of bits: 8, 16, 32 bit ports Types Control registers: receive device commands Status registers: contains device’s internal status information Input registers: data is taken from the device Output registers: data is written to transmit it to the device Example Parallel Port has eight ports (each port: 8bits).</description>
+    <pubDate>Tue, 30 Apr 2024 01:47:07 GMT</pubDate>
   </item><item>
-    <title>SPSel</title>
-    <link>https://tech.parkjb.com/ARM/Registers/SPSel</link>
-    <guid>https://tech.parkjb.com/ARM/Registers/SPSel</guid>
-    <description>SPSel § Purpose: Allows the Stack Pointer to be selected between SP_EL0 and SP_ELx. Reference: https://developer.arm.com/documentation/ddi0601/2023-12/AArch64-Registers/SPSel—Stack-Pointer-Select .</description>
-    <pubDate>Thu, 25 Apr 2024 19:29:22 GMT</pubDate>
+    <title>Deferred Work</title>
+    <link>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</link>
+    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</guid>
+    <description>Objectives § Understanding deferred work Implementation of common tasks that uses deferred work Understanding the peculiarities of synchronization for deferred work Background information § Deferred Work § Definition: A class of kernel facilities that allows one to schedule code to be executed at a later timer Can run either in process context or in interruption context depending on the type of the deferred work.</description>
+    <pubDate>Tue, 30 Apr 2024 01:47:07 GMT</pubDate>
+  </item><item>
+    <title>Kernel Labs</title>
+    <link>https://tech.parkjb.com/Linux/Kernel-Labs/</link>
+    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/</guid>
+    <description></description>
+    <pubDate>Tue, 30 Apr 2024 01:47:07 GMT</pubDate>
   </item>
     </channel>
   </rss>
