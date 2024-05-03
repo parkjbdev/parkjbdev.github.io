@@ -1,18 +1,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
     <loc>https://tech.parkjb.com/ARM/Exceptions/Exception-Handling-Registers</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Exceptions/Exception-Levels</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Exceptions/Exception-Vector-Table</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Exceptions/Interrupt</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Exceptions/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Instructions/DMB-DSB-ISB</loc>
     <lastmod>2024-03-27T00:00:00.000Z</lastmod>
@@ -24,22 +24,22 @@
     <lastmod>2024-03-27T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Instructions/cmp</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Instructions/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Learn-The-Architecture</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Processor-Modes</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/DAIF</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/HCR_EL2</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/Program-Status-Registers-(PSR)/APSR</loc>
     <lastmod>2024-03-27T00:00:00.000Z</lastmod>
@@ -54,64 +54,64 @@
     <lastmod>2024-03-27T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/SPSel</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/VBAR_EL1</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Registers/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/ARM/Timer</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Flutter/Architecture</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Flutter/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/ELF</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-APIs/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-APIs/kernel-%E2%86%94-user</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-APIs/mknod</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-Labs/00_Introduction</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-Labs/03_Character-Device-Drivers</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-Labs/04_IO-access-and-Interrupts</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-Labs/05_Deferred-Work</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.521Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Kernel-Labs/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Linux-Commands/Upgrade-Debian</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Linux-Commands/</loc>
-    <lastmod>2024-04-30T01:48:26.372Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/Linux-Commands/rsync</loc>
-    <lastmod>2024-04-30T01:48:26.376Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Linux/</loc>
-    <lastmod>2024-04-30T01:48:26.376Z</lastmod>
+    <lastmod>2024-05-03T17:23:49.525Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cookie/0314_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B0%9C%ED%91%9C</loc>
     <lastmod>2023-03-14T00:00:00.000Z</lastmod>
@@ -192,28 +192,28 @@
     <lastmod>2024-04-13T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</loc>
-    <lastmod>2024-04-30T01:48:26.876Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.049Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/</loc>
-    <lastmod>2024-04-30T01:48:26.880Z</lastmod>
+    <lastmod>2024-05-03T17:23:50.053Z</lastmod>
   </url><url>
     <loc>https://tech.parkjb.com/Projects/Doge_Driver</loc>
     <lastmod>2022-02-23T00:00:00.000Z</lastmod>
