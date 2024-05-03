@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
-      <title>🪴 PARKJB TECH</title>
+      <title>🪴 ParkJB Garden</title>
       <link>https://tech.parkjb.com</link>
-      <description>Last 10 notes on 🪴 PARKJB TECH</description>
+      <description>Last 10 notes on 🪴 ParkJB Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
     <title>index</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/</guid>
     <description></description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>Virt Board Memory Map</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Appendix/Virt-Board-Memory-Map</guid>
     <description>hw/arm/virt.c /* Addresses and sizes of our components. * 0.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>2024-03-28</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-28</guid>
     <description>음… 망함 왜인진 모르겠으나,, uefi 앱으로 제작하니 *.S 파일 컴파일할때 .size 같은 구문들을 이해를 못한다.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>2024-03-29</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-03-29</guid>
     <description>Linux Memory Layout § https://hackyboiz.github.io/2022/01/14/poosic/linux-memory-layout/ Code Segment § R-X Data Segment § RW- R—: rodata BSS Segment § Global Variable RW- Stack Segment § Heap Segment §.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>2024-04-01</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-01</guid>
     <description>Memory Map § AddressRole0x0boot flash (-bios or pflash)0x09000000UART (pl011)0x40000000Ram Starting point (qemu will load dtb here)0x40200000kernel_start(0x40218000)__boot_core_stack_start (size: 0x4000)(0x4021c000)__boot_core_stack_end_exclusive, kernel_end.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>2024-04-03</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-03</guid>
     <description>Linker Script § /* Parts of this linker script are directly taken from Andre Richters Project: * https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials/blob/master/16_virtual_mem_part4_higher_half_kernel/src/bsp/raspberrypi/link.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>2024-04-08</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/2024-04-08</guid>
     <description>armv7: https://developer.arm.com/documentation/den0024/a/AArch64-Exception-Handling/AArch64-exception-table?lang=en#BABGIIHH armv8: https://developer.</description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
     <title>index</title>
     <link>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</link>
     <guid>https://tech.parkjb.com/Projects/Cosmos-(ongoing)/Daily-Notes/</guid>
     <description></description>
-    <pubDate>Fri, 03 May 2024 17:23:50 GMT</pubDate>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
-    <title>Kernel Labs</title>
-    <link>https://tech.parkjb.com/Linux/Kernel-Labs/</link>
-    <guid>https://tech.parkjb.com/Linux/Kernel-Labs/</guid>
-    <description></description>
-    <pubDate>Fri, 03 May 2024 17:23:49 GMT</pubDate>
+    <title>Exception Handling Registers</title>
+    <link>https://tech.parkjb.com/ARM/Exceptions/Exception-Handling-Registers</link>
+    <guid>https://tech.parkjb.com/ARM/Exceptions/Exception-Handling-Registers</guid>
+    <description>https://developer.arm.com/documentation/den0024/a/BABJGFCI Transclude of DAIF Transclude of SPSel.</description>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item><item>
-    <title>Linux BIOS</title>
-    <link>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</link>
-    <guid>https://tech.parkjb.com/Linux/Linux-Commands/Linux-BIOS</guid>
-    <description>BIOS 진입법 sudo systemctl reboot --firmware-setup .</description>
-    <pubDate>Fri, 03 May 2024 17:23:49 GMT</pubDate>
+    <title>Exception Levels</title>
+    <link>https://tech.parkjb.com/ARM/Exceptions/Exception-Levels</link>
+    <guid>https://tech.parkjb.com/ARM/Exceptions/Exception-Levels</guid>
+    <description>Exception Levels § EL3 Highest privilege level is typically used for so called Secure Monitor EL3 firmware typically implements the Power State Coordination Interface (PSCI) for the lower ELs to use EL3 firmware typically involved into trusted boot EL2 Targets the virtualization use-case EL at which hypervisors normally use for virtualization purposes.</description>
+    <pubDate>Fri, 03 May 2024 17:26:24 GMT</pubDate>
   </item>
     </channel>
   </rss>
