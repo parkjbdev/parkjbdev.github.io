@@ -22,8 +22,8 @@
 
     const galleryHTML = (project.gallery || [])
       .map(
-        (g) => `
-          <figure class="${g.wide ? 'wide' : ''}">
+        (g, i) => `
+          <figure class="${g.wide ? 'wide' : ''}" data-gallery-idx="${i}" tabindex="0" role="button" aria-label="Open image ${i + 1}">
             <img src="${escapeHTML(g.src)}" alt="${escapeHTML(project.title)} preview" loading="lazy" />
           </figure>`
       )
@@ -53,7 +53,7 @@
           <div class="modal-scroll">
             ${
               project.cover
-                ? `<div class="modal-hero"><img src="${escapeHTML(project.cover)}" alt="${escapeHTML(project.title)} cover" /></div>`
+                ? `<div class="modal-hero${project.coverFit === 'contain' ? ' modal-hero--contain' : ''}"><img src="${escapeHTML(project.cover)}" alt="${escapeHTML(project.title)} cover" /></div>`
                 : ''
             }
             <div class="modal-body">
@@ -170,6 +170,22 @@
 
   function open(project, triggerEl, onClose) {
     mount(render(project), triggerEl, onClose);
+    const r = root();
+    if (!r) return;
+    const gallery = project.gallery || [];
+    r.querySelectorAll('.modal-gallery figure[data-gallery-idx]').forEach((fig) => {
+      const handler = () => {
+        const idx = parseInt(fig.getAttribute('data-gallery-idx'), 10) || 0;
+        openLightbox(gallery, idx);
+      };
+      fig.addEventListener('click', handler);
+      fig.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handler();
+        }
+      });
+    });
   }
 
   function openList(projects, triggerEl, onClose) {
@@ -204,5 +220,121 @@
     }, 320);
   }
 
+  // ---------- Lightbox ----------
+  let lbImages = [];
+  let lbIndex = 0;
+  let lbKeydown = null;
+
+  function lbRoot() {
+    let el = document.getElementById('lightbox-root');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'lightbox-root';
+      el.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+
+  function renderLightbox() {
+    const img = lbImages[lbIndex];
+    if (!img) return '';
+    const total = lbImages.length;
+    const counter = total > 1 ? `<div class="lightbox-counter">${lbIndex + 1} / ${total}</div>` : '';
+    const nav = total > 1
+      ? `
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image" data-lb-prev>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image" data-lb-next>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>`
+      : '';
+    const navBar = total > 1
+      ? `
+        <div class="lightbox-nav-bar" role="group" aria-label="Image navigation">
+          <button type="button" aria-label="Previous image" data-lb-prev>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span>${lbIndex + 1} / ${total}</span>
+          <button type="button" aria-label="Next image" data-lb-next>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>`
+      : '';
+    return `
+      <div class="lightbox-backdrop" data-lb-close></div>
+      <div class="lightbox" role="dialog" aria-modal="true">
+        <button class="lightbox-close" type="button" aria-label="Close" data-lb-close>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        ${nav}
+        <figure class="lightbox-figure">
+          <img src="${escapeHTML(img.src)}" alt="" />
+        </figure>
+        ${navBar}
+        ${counter}
+      </div>
+    `;
+  }
+
+  function paintLightbox() {
+    const r = lbRoot();
+    r.innerHTML = renderLightbox();
+    r.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => {
+      const bd = r.querySelector('.lightbox-backdrop');
+      const lb = r.querySelector('.lightbox');
+      bd && bd.classList.add('open');
+      lb && lb.classList.add('open');
+    });
+    r.querySelectorAll('[data-lb-close]').forEach((el) => el.addEventListener('click', closeLightbox));
+    r.querySelectorAll('[data-lb-prev]').forEach((el) => el.addEventListener('click', (e) => { e.stopPropagation(); navLightbox(-1); }));
+    r.querySelectorAll('[data-lb-next]').forEach((el) => el.addEventListener('click', (e) => { e.stopPropagation(); navLightbox(1); }));
+  }
+
+  function navLightbox(delta) {
+    const n = lbImages.length;
+    if (!n) return;
+    lbIndex = (lbIndex + delta + n) % n;
+    paintLightbox();
+  }
+
+  function openLightbox(images, startIndex) {
+    if (!images || !images.length) return;
+    lbImages = images;
+    lbIndex = Math.max(0, Math.min(startIndex || 0, images.length - 1));
+    paintLightbox();
+    if (!lbKeydown) {
+      lbKeydown = (e) => {
+        if (e.key === 'Escape') { e.stopPropagation(); closeLightbox(); }
+        else if (e.key === 'ArrowLeft') navLightbox(-1);
+        else if (e.key === 'ArrowRight') navLightbox(1);
+      };
+      document.addEventListener('keydown', lbKeydown, true);
+    }
+  }
+
+  function closeLightbox() {
+    const r = lbRoot();
+    const bd = r.querySelector('.lightbox-backdrop');
+    const lb = r.querySelector('.lightbox');
+    bd && bd.classList.remove('open');
+    lb && lb.classList.remove('open');
+    if (lbKeydown) {
+      document.removeEventListener('keydown', lbKeydown, true);
+      lbKeydown = null;
+    }
+    setTimeout(() => {
+      r.innerHTML = '';
+      r.setAttribute('aria-hidden', 'true');
+      lbImages = [];
+      lbIndex = 0;
+    }, 240);
+  }
+
   window.ProjectModal = { open, openList, close };
+  window.Lightbox = { open: openLightbox, close: closeLightbox };
 })();

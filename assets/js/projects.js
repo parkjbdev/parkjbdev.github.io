@@ -10,7 +10,7 @@ window.PROJECTS = [
     year: '2026',
     role: 'System lead · Architecture',
     stack: 'AUTOSAR Classic · MATLAB/Simulink · CAN · StrictDoc',
-    cover: 'https://picsum.photos/seed/acc-cover/1600/900',
+    cover: 'assets/img/acc/cover.jpg',
     summary:
       '5인 팀으로 만든 차량용 ACC(Adaptive Cruise Control) 시스템. 요구공학(StrictDoc) → AUTOSAR Classic MBD → 임베디드 보드 → HMI/센서퓨전까지 한 번에 엮은 학습 프로젝트. SeSAC 팀별 프로젝트 1등 우수상.',
     body: [
@@ -19,9 +19,11 @@ window.PROJECTS = [
       '배운 것 한 줄: "타임아웃 → safe-state" 같은 단순한 규칙이 ASIL-B 의 9할이고, 화려한 진단보다 확실한 fallback 이 우선이라는 것.',
     ],
     gallery: [
-      { src: 'https://picsum.photos/seed/acc-1/1600/900', wide: true },
-      { src: 'https://picsum.photos/seed/acc-2/1200/900' },
-      { src: 'https://picsum.photos/seed/acc-3/1200/900' },
+      { src: 'assets/img/acc/01-architecture.jpg', wide: true },
+      { src: 'assets/img/acc/02-vehicle.jpg' },
+      { src: 'assets/img/acc/03-award.jpg' },
+      { src: 'assets/img/acc/04-demo.jpg' },
+      { src: 'assets/img/acc/05-team.jpg' },
     ],
     links: [
       { label: 'GitHub →', url: 'https://github.com/gaepo-japcho/ACC' },
@@ -111,7 +113,8 @@ window.PROJECTS = [
     year: '2022',
     role: 'Founder · Team lead',
     stack: 'ROS · Jetson Nano · OpenCV · SLAM · MORAI',
-    cover: 'https://picsum.photos/seed/autopia-cover/1600/900',
+    cover: 'assets/img/autopia/logo.png',
+    coverFit: 'contain',
     summary:
       '아주대 교내 최초의 자율주행 소학회를 창단해 초대 회장으로 이끌고, 한 해 동안 1/10 스케일 자율주행 차량으로 3개 대회에서 연속 수상한 long-running 프로젝트.',
     body: [
@@ -120,9 +123,13 @@ window.PROJECTS = [
       '대회 성과를 일회성으로 끝내지 않으려고 교내 최초의 자율주행 동아리 AUTOPIA 를 창단해 초대 회장직을 맡고, 학교에 NVIDIA GPU 기반 연산 실습실 신설을 제안해 확보, 1/10 스케일 차량을 위한 주행 트랙까지 직접 깔았습니다.',
     ],
     gallery: [
-      { src: 'https://picsum.photos/seed/autopia-1/1600/900', wide: true },
-      { src: 'https://picsum.photos/seed/autopia-2/1200/900' },
-      { src: 'https://picsum.photos/seed/autopia-3/1200/900' },
+      { src: 'assets/img/autopia/01-morai-sim.png', wide: true },
+      { src: 'assets/img/autopia/02-award-morai.jpg' },
+      { src: 'assets/img/autopia/03-award-jeju.jpg' },
+      { src: 'assets/img/autopia/04-award-hl.jpg' },
+      { src: 'assets/img/autopia/05-vehicle-build.jpg' },
+      { src: 'assets/img/autopia/06-rviz-slam.jpg' },
+      { src: 'assets/img/autopia/10-team.jpg' },
     ],
     links: [],
   },
