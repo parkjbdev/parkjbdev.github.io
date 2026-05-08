@@ -1,0 +1,103 @@
+/* projects.js — edit this file to update your portfolio entries */
+window.PROJECTS = [
+  {
+    id: 'aurora',
+    number: '01',
+    title: 'Aurora',
+    titleEm: 'real-time',
+    tag: 'product',
+    year: '2025',
+    role: 'Design · Engineering',
+    stack: 'TypeScript · Rust · CRDT',
+    cover: 'https://picsum.photos/seed/aurora-cover/1600/900',
+    summary:
+      'A real-time collaborative editor with end-to-end encryption. Built around a custom CRDT and a tiny syncing kernel that runs on both web and native.',
+    body: [
+      'Aurora started as a weekend experiment to see how small a collaborative editing core could be. The first prototype was 800 lines of Rust compiled to WebAssembly, syncing two browsers over a single WebSocket.',
+      'I designed the entire surface from the document model up to the cursor presence layer. The hardest part was making conflict resolution feel inevitable — not magical, not janky, just obvious.',
+    ],
+    gallery: [
+      { src: 'https://picsum.photos/seed/aurora-1/1600/900', wide: true },
+      { src: 'https://picsum.photos/seed/aurora-2/1200/900' },
+      { src: 'https://picsum.photos/seed/aurora-3/1200/900' },
+    ],
+    links: [
+      { label: 'Live →', url: '#' },
+      { label: 'Source', url: '#' },
+    ],
+  },
+  {
+    id: 'lantern',
+    number: '02',
+    title: 'Lantern',
+    titleEm: 'study',
+    tag: 'tooling',
+    year: '2024',
+    role: 'Solo project',
+    stack: 'Swift · SwiftUI · Core ML',
+    cover: 'https://picsum.photos/seed/lantern-cover/1600/900',
+    summary:
+      'A focus timer that learns your rhythm. Lantern watches how you actually work — not how productivity apps assume you work — and gradually adapts.',
+    body: [
+      'I wanted a Pomodoro app that stopped lying to me. Most timers assume a fixed 25-minute block; Lantern measures my actual focus windows and proposes blocks that fit how I really work that day.',
+      'Built natively for macOS with SwiftUI. The on-device model is small enough to retrain weekly on the user\'s own data, so nothing ever leaves the laptop.',
+    ],
+    gallery: [
+      { src: 'https://picsum.photos/seed/lantern-1/1200/900' },
+      { src: 'https://picsum.photos/seed/lantern-2/1200/900' },
+    ],
+    links: [
+      { label: 'Download', url: '#' },
+    ],
+  },
+  {
+    id: 'paper-radio',
+    number: '03',
+    title: 'Paper Radio',
+    titleEm: 'late-night',
+    tag: 'experiment',
+    year: '2024',
+    role: 'Design · Sound',
+    stack: 'Web Audio · Canvas',
+    cover: 'https://picsum.photos/seed/paper-cover/1600/900',
+    summary:
+      'A tiny browser instrument shaped like a paper folded radio. Tune the dial and it generates ambient loops from a small set of hand-recorded samples.',
+    body: [
+      'Paper Radio is a one-page toy. There are three knobs: station, density, and warmth. Underneath, a deterministic procedural sequencer crossfades between five field recordings I made over a single weekend.',
+      'I wrote it during a week when I was thinking too much about work, and it became the thing that finally let me sit still.',
+    ],
+    gallery: [
+      { src: 'https://picsum.photos/seed/paper-1/1600/900', wide: true },
+      { src: 'https://picsum.photos/seed/paper-2/1200/900' },
+      { src: 'https://picsum.photos/seed/paper-3/1200/900' },
+    ],
+    links: [
+      { label: 'Open instrument →', url: '#' },
+    ],
+  },
+  {
+    id: 'field-notes',
+    number: '04',
+    title: 'Field Notes',
+    titleEm: 'archive',
+    tag: 'writing',
+    year: '2023 — now',
+    role: 'Writing · Photography',
+    stack: 'Eleventy · Markdown',
+    cover: 'https://picsum.photos/seed/field-cover/1600/900',
+    summary:
+      'A slow blog about software, places, and the small mechanics of attention. Updated whenever something is actually worth saying.',
+    body: [
+      'Field Notes is the index of essays I wish I had read earlier. Each entry pairs a piece of writing with a photograph from the same day — the photograph is the part that anchors the piece in time.',
+      'No analytics, no comments, no newsletter form. Just a list and an RSS feed.',
+    ],
+    gallery: [
+      { src: 'https://picsum.photos/seed/field-1/1200/900' },
+      { src: 'https://picsum.photos/seed/field-2/1200/900' },
+    ],
+    links: [
+      { label: 'Read →', url: '#' },
+      { label: 'RSS', url: '#' },
+    ],
+  },
+];
